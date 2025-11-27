@@ -131,7 +131,7 @@ To see the transformation details:
 ---
 
 **Note:** These sample files are for schema reference only. Full datasets are available:
-- **Locally:** `~/personalProjects/Project/localData/` (after running `dataFetcher`)
-- **S3 Raw:** `s3://dataco-supply-chain-analytics/raw/` (automated upload via dataFetcher)
+- **S3 Raw:** `s3://dataco-supply-chain-analytics/raw/` (default: `python dataFetcher.py`)
 - **S3 Processed:** `s3://dataco-supply-chain-analytics/processed/` (Alteryx output)
+- **Locally (optional):** Run `python dataFetcher.py --local-path localData` to save to local directory
 

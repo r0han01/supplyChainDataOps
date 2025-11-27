@@ -1,11 +1,12 @@
 """
 DataCo Supply Chain Dataset Fetcher
-Automated data pipeline: Kaggle → S3
+Automated data pipeline: Kaggle → S3 (or local directory)
 """
 
 import os
 import shutil
 import logging
+import argparse
 from pathlib import Path
 from datetime import datetime
 import boto3
@@ -108,25 +109,65 @@ class DataFetcher:
         except ClientError:
             pass
     
-    def run(self, clean_existing=True):
+    def save_to_local(self, local_path):
+        """Copy files to local directory"""
+        destination = Path(local_path).resolve()
+        destination.mkdir(parents=True, exist_ok=True)
+        
+        saved = []
+        for filename in self.REQUIRED_FILES:
+            src = self.local_cache / filename
+            dst = destination / filename
+            if src.exists():
+                shutil.copy2(src, dst)
+                saved.append(str(dst))
+        
+        return saved
+    
+    def run(self, clean_existing=True, local_path=None):
         """Execute complete pipeline"""
         logger.info(f"Fetching: {self.DATASET_NAME}")
         
         self.download_dataset()
         logger.info("Downloaded")
         
-        if clean_existing:
-            self.clean_s3_prefix("raw")
-        
-        uploaded = self.upload_to_s3(prefix="raw")
-        logger.info(f"Uploaded: s3://{self.bucket_name}/raw/ ({len(uploaded)} files)")
-        
-        return uploaded
+        if local_path:
+            # Save to local directory
+            saved = self.save_to_local(local_path)
+            logger.info(f"Saved to: {local_path} ({len(saved)} files)")
+            return saved
+        else:
+            # Upload to S3 (default behavior)
+            if clean_existing:
+                self.clean_s3_prefix("raw")
+            
+            uploaded = self.upload_to_s3(prefix="raw")
+            logger.info(f"Uploaded: s3://{self.bucket_name}/raw/ ({len(uploaded)} files)")
+            return uploaded
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description='Fetch DataCo supply chain dataset from Kaggle',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python dataFetcher.py                    # Upload to S3 (default)
+  python dataFetcher.py --local-path .     # Save to current directory
+  python dataFetcher.py -p localData       # Save to localData folder
+        """
+    )
+    parser.add_argument(
+        '-p', '--local-path',
+        type=str,
+        default=None,
+        help='Save files to local directory instead of S3 (default: None, uploads to S3)'
+    )
+    
+    args = parser.parse_args()
+    
     fetcher = DataFetcher()
-    fetcher.run()
+    fetcher.run(local_path=args.local_path)
     return 0
 
 

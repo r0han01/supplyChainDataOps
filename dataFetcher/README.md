@@ -23,9 +23,17 @@ Get your Kaggle API token:
 export KAGGLE_API_TOKEN="your_token_here"
 ```
 
-Then run:
+## Usage
+
+**Default:** Upload to S3
 ```bash
 python dataFetcher.py
+```
+
+**Save locally:** Use `--local-path` or `-p`
+```bash
+python dataFetcher.py --local-path localData    # Save to localData folder
+python dataFetcher.py -p .                     # Save to current directory
 ```
 
 ## About File Format
