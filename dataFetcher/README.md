@@ -39,6 +39,9 @@ python dataFetcher.py -p .                     # Save to current directory
 ## About File Format
 
 Originally wanted to use Parquet (better compression, faster queries). Switched to CSV because Alteryx Designer Cloud doesn't support Parquet preview. CSV works fine for our pipeline and keeps things simple.
+###
+<img width="901" height="464" alt="Alteryx Designer Cloud doesn't support Parquet preview" src="https://github.com/user-attachments/assets/dcb5107a-5936-4901-ae90-8965fa5f9e7a" />
+
 
 ## Output
 
