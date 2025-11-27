@@ -43,6 +43,9 @@ Originally wanted to use Parquet (better compression, faster queries). Switched 
 ## Output
 
 Files go to: `s3://dataco-supply-chain-analytics/raw/`
+###
+<img width="1629" height="391" alt="Raw data saved to AWS s3" src="https://github.com/user-attachments/assets/f87a5ad4-b196-49f9-8e7c-9ec3443e1e33" />
+
 
 - DataCoSupplyChainDataset.csv (~96 MB)
 - DescriptionDataCoSupplyChain.csv (~4 KB)
