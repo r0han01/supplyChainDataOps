@@ -1,0 +1,103 @@
+{
+  "workflow_name": "Supply Chain Data Transformation",
+  "source_file": "DataCoSupplyChainDataset.csv",
+  "output_file": "DataCoSupplyChainDataset.csv",
+  "original_columns": 53,
+  "added_columns": 9,
+  "total_columns": 58,
+  "transformations": [
+    {
+      "field_name": "profitMarginPct",
+      "data_type": "Float",
+      "formula": "([Benefit per order] / [Sales]) * 100",
+      "description": "Calculates profit margin as a percentage of sales",
+      "tool": "Formula Tool",
+      "notes": "Handles division by zero gracefully, returns null for zero sales"
+    },
+    {
+      "field_name": "profitCategory",
+      "data_type": "String",
+      "formula": "IF [profitMarginPct] > 15 THEN 'High Margin'\nELSEIF [profitMarginPct] > 5 THEN 'Medium Margin'\nELSEIF [profitMarginPct] > 0 THEN 'Low Margin'\nELSE 'Loss'\nENDIF",
+      "description": "Categorizes orders by profit margin using data-driven thresholds",
+      "tool": "Formula Tool",
+      "notes": "Based on actual data distribution: 15% = high performers, 5% = break-even threshold"
+    },
+    {
+      "field_name": "deliveryDelay",
+      "data_type": "Integer",
+      "formula": "[Days for shipping (real)] - [Days for shipment (scheduled)]",
+      "description": "Calculates delivery delay (positive = late, negative = early)",
+      "tool": "Formula Tool",
+      "notes": "Enables quick identification of late deliveries without comparing two columns"
+    },
+    {
+      "field_name": "orderYear",
+      "data_type": "Integer",
+      "formula": "DateTimeYear(DateTimeParse([order date (DateOrders)], '%m/%d/%Y %H:%M'))",
+      "description": "Extracts year from order date",
+      "tool": "Formula Tool",
+      "notes": "Parses string date format M/D/YYYY H:MM to DateTime first"
+    },
+    {
+      "field_name": "orderMonth",
+      "data_type": "Integer",
+      "formula": "DateTimeMonth(DateTimeParse([order date (DateOrders)], '%m/%d/%Y %H:%M'))",
+      "description": "Extracts month (1-12) from order date",
+      "tool": "Formula Tool",
+      "notes": "Enables monthly aggregations and seasonality analysis"
+    },
+    {
+      "field_name": "orderQuarter",
+      "data_type": "String",
+      "formula": "'Q' + ToString(DateTimeQuarter(DateTimeParse([order date (DateOrders)], '%m/%d/%Y %H:%M')))",
+      "description": "Extracts quarter (Q1-Q4) from order date",
+      "tool": "Formula Tool",
+      "notes": "Returns formatted string like 'Q1', 'Q2', etc."
+    },
+    {
+      "field_name": "orderDayOfWeek",
+      "data_type": "String",
+      "formula": "DateTimeFormat(DateTimeParse([order date (DateOrders)], '%m/%d/%Y %H:%M'), '%A')",
+      "description": "Extracts day name (Monday-Sunday) from order date",
+      "tool": "Formula Tool",
+      "notes": "Uses %A format code to get full day name"
+    },
+    {
+      "field_name": "orderHour",
+      "data_type": "Integer",
+      "formula": "DateTimeHour(DateTimeParse([order date (DateOrders)], '%m/%d/%Y %H:%M'))",
+      "description": "Extracts hour (0-23) from order date",
+      "tool": "Formula Tool",
+      "notes": "Enables hourly pattern analysis for order timing"
+    },
+    {
+      "field_name": "isLate",
+      "data_type": "Integer",
+      "formula": "IF [Late_delivery_risk] = 1 THEN 1 ELSE 0 ENDIF",
+      "description": "Binary flag for late deliveries (1 = late, 0 = on time)",
+      "tool": "Formula Tool",
+      "notes": "Simplified flag for filtering and aggregations"
+    }
+  ],
+  "data_cleansing_steps": [
+    {
+      "tool": "Auto Column Tool",
+      "action": "Automatically detect and convert data types",
+      "columns_affected": "All numeric and date columns",
+      "purpose": "Ensure proper data types for calculations"
+    },
+    {
+      "tool": "Data Cleansing Tool",
+      "actions": [
+        "Remove leading/trailing whitespace",
+        "Standardize text case to Title Case",
+        "Replace null values with appropriate defaults"
+      ],
+      "columns_affected": "All string columns",
+      "purpose": "Ensure consistent categorical values for grouping"
+    }
+  ],
+  "output_location": "s3://dataco-supply-chain-analytics/processed/DataCoSupplyChainDataset/",
+  "next_step": "Loaded into Snowflake for dbt transformations"
+}
+

@@ -1,0 +1,127 @@
+{
+  "workflow_name": "Clickstream Data Preparation",
+  "source_file": "tokenized_access_logs.csv",
+  "output_file": "clickstreamDataPreparation.csv",
+  "original_columns": 8,
+  "added_columns": 12,
+  "total_columns": 20,
+  "transformations": [
+    {
+      "field_name": "eventYear",
+      "data_type": "Integer",
+      "formula": "DateTimeYear(DateTimeParse([Date], '%m/%d/%Y %H:%M'))",
+      "description": "Extracts year from event timestamp",
+      "tool": "Formula Tool",
+      "notes": "Parses string date format M/D/YYYY H:MM to DateTime first"
+    },
+    {
+      "field_name": "eventMonth",
+      "data_type": "Integer",
+      "formula": "DateTimeMonth(DateTimeParse([Date], '%m/%d/%Y %H:%M'))",
+      "description": "Extracts month (1-12) from event timestamp",
+      "tool": "Formula Tool",
+      "notes": "Enables monthly traffic analysis and seasonality patterns"
+    },
+    {
+      "field_name": "eventQuarter",
+      "data_type": "String",
+      "formula": "'Q' + ToString(DateTimeQuarter(DateTimeParse([Date], '%m/%d/%Y %H:%M')))",
+      "description": "Extracts quarter (Q1-Q4) from event timestamp",
+      "tool": "Formula Tool",
+      "notes": "Returns formatted string like 'Q1', 'Q2', etc."
+    },
+    {
+      "field_name": "eventDayOfWeek",
+      "data_type": "String",
+      "formula": "DateTimeFormat(DateTimeParse([Date], '%m/%d/%Y %H:%M'), '%A')",
+      "description": "Extracts day name (Monday-Sunday) from event timestamp",
+      "tool": "Formula Tool",
+      "notes": "Identifies weekday vs weekend browsing patterns"
+    },
+    {
+      "field_name": "eventHourOfDay",
+      "data_type": "Integer",
+      "formula": "DateTimeHour(DateTimeParse([Date], '%m/%d/%Y %H:%M'))",
+      "description": "Extracts hour (0-23) from event timestamp",
+      "tool": "Formula Tool",
+      "notes": "Critical for understanding peak traffic hours"
+    },
+    {
+      "field_name": "isCartAdd",
+      "data_type": "Integer",
+      "formula": "IF Contains([url], 'cart') THEN 1 ELSE 0 ENDIF",
+      "description": "Binary flag for cart addition events (1 = cart add, 0 = page view)",
+      "tool": "Formula Tool",
+      "notes": "Simplifies conversion funnel analysis"
+    },
+    {
+      "field_name": "eventType",
+      "data_type": "String",
+      "formula": "IF Contains([url], 'cart') THEN 'Cart Add' ELSE 'Page View' ENDIF",
+      "description": "Explicit event type label instead of URL parsing",
+      "tool": "Formula Tool",
+      "notes": "Makes event filtering more intuitive for analysts"
+    },
+    {
+      "field_name": "sessionDate",
+      "data_type": "Date",
+      "formula": "DateTimeFormat(DateTimeParse([Date], '%m/%d/%Y %H:%M'), '%Y-%m-%d')",
+      "description": "Date only (without time) for daily aggregations",
+      "tool": "Formula Tool",
+      "notes": "Enables easy date-based grouping without time component"
+    },
+    {
+      "field_name": "pageType",
+      "data_type": "String",
+      "formula": "IF Contains([url], 'product') THEN 'Product'\nELSEIF Contains([url], 'category') THEN 'Category'\nELSEIF Contains([url], 'department') THEN 'Department'\nELSE 'Other'\nENDIF",
+      "description": "Classifies page type based on URL pattern",
+      "tool": "Formula Tool",
+      "notes": "Helps understand user navigation: department → category → product hierarchy"
+    },
+    {
+      "field_name": "sessionID",
+      "data_type": "String",
+      "formula": "[ip] + '_' + DateTimeFormat(DateTimeParse([Date], '%m/%d/%Y %H:%M'), '%Y%m%d')",
+      "description": "Concatenated user identifier for session tracking",
+      "tool": "Formula Tool",
+      "notes": "Combines IP and date to create pseudo-session ID (same IP, same day = same session)"
+    },
+    {
+      "field_name": "isWeekend",
+      "data_type": "Integer",
+      "formula": "IF DateTimeFormat(DateTimeParse([Date], '%m/%d/%Y %H:%M'), '%A') IN ('Saturday', 'Sunday') THEN 1 ELSE 0 ENDIF",
+      "description": "Binary flag for weekend events (1 = weekend, 0 = weekday)",
+      "tool": "Formula Tool",
+      "notes": "Enables quick weekend vs weekday behavior comparison"
+    },
+    {
+      "field_name": "timeOfDay",
+      "data_type": "String",
+      "formula": "IF DateTimeHour(DateTimeParse([Date], '%m/%d/%Y %H:%M')) >= 6 AND DateTimeHour(DateTimeParse([Date], '%m/%d/%Y %H:%M')) < 12 THEN 'Morning'\nELSEIF DateTimeHour(DateTimeParse([Date], '%m/%d/%Y %H:%M')) >= 12 AND DateTimeHour(DateTimeParse([Date], '%m/%d/%Y %H:%M')) < 18 THEN 'Afternoon'\nELSEIF DateTimeHour(DateTimeParse([Date], '%m/%d/%Y %H:%M')) >= 18 AND DateTimeHour(DateTimeParse([Date], '%m/%d/%Y %H:%M')) < 22 THEN 'Evening'\nELSE 'Night'\nENDIF",
+      "description": "Categorizes events by time of day (Morning/Afternoon/Evening/Night)",
+      "tool": "Formula Tool",
+      "notes": "Morning: 6-12, Afternoon: 12-18, Evening: 18-22, Night: 22-6"
+    }
+  ],
+  "data_cleansing_steps": [
+    {
+      "tool": "Auto Column Tool",
+      "action": "Automatically detect and convert data types",
+      "columns_affected": "Month, Hour, and date-related fields",
+      "purpose": "Ensure proper data types for temporal calculations"
+    },
+    {
+      "tool": "Data Cleansing Tool",
+      "actions": [
+        "Remove leading/trailing whitespace",
+        "Standardize text case for Category and Department fields",
+        "Handle null values in URL field"
+      ],
+      "columns_affected": "All string columns",
+      "purpose": "Ensure consistent categorical values"
+    }
+  ],
+  "output_location": "s3://dataco-supply-chain-analytics/processed/clickstreamDataPreparation/",
+  "next_step": "Loaded into Snowflake for dbt transformations and funnel analysis"
+}
+

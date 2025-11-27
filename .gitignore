@@ -1,0 +1,57 @@
+# Environment variables
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Data files (don't commit large datasets)
+localData/
+*.parquet
+
+# Keep reference data for GitHub
+# rawData (reference only)/ and processedData (reference only)/ are committed
+
+# Kaggle cache
+dataFetcher/cache/
+*.zip
+
+# AWS
+.aws/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Alteryx temporary files
+*.yxdb
+*.bak
+Build
+
+# OS generated files
+Thumbs.db
+.directory
