@@ -30,8 +30,8 @@ This folder contains the transformation formulas and workflows used to clean and
 
 ### Workflow Diagram
 
-![Supply Chain Workflow](./images/supplyChainWorkflow.png)
-*Image placeholder: Alteryx workflow canvas showing tool connections*
+<img width="886" height="328" alt="Alteryx workflow canvas showing tool connections" src="https://github.com/user-attachments/assets/655d5857-04fb-4d24-b6e3-51b4d1ca1db4" />
+
 
 ---
 
@@ -61,8 +61,7 @@ This folder contains the transformation formulas and workflows used to clean and
 
 ### Workflow Diagram
 
-![Clickstream Workflow](./images/clickstreamWorkflow.png)
-*Image placeholder: Alteryx workflow canvas showing tool connections*
+<img width="836" height="307" alt="Alteryx workflow canvas showing tool connections" src="https://github.com/user-attachments/assets/5044fb8f-93ab-4b70-9cf3-79f3bf5973ea" />
 
 ---
 
