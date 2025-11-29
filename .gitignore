@@ -3,6 +3,16 @@
 *.env
 !.env.example
 
+# Terraform
+terraform.tfvars
+*.tfvars
+!terraform.tfvars.example
+!*.tfvars.example
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
 # Python
 __pycache__/
 *.py[cod]

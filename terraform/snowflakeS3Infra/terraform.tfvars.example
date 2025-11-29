@@ -1,0 +1,44 @@
+# =============================================================================
+# Terraform Variables Configuration
+# =============================================================================
+# Copy this file to terraform.tfvars and fill in your values:
+#   cp terraform.tfvars.example terraform.tfvars
+
+# -----------------------------------------------------------------------------
+# AWS Configuration
+# -----------------------------------------------------------------------------
+
+# AWS region where your S3 bucket is located
+# Get value: aws configure get region
+awsRegion = "us-east-1"
+
+# S3 bucket name containing processed files
+# Get value: aws s3 ls
+s3BucketName = "your-bucket-name"
+
+# S3 prefix path for processed files
+# Get value: aws s3 ls s3://your-bucket-name/ --recursive
+s3ProcessedPrefix = "processed/"
+
+# -----------------------------------------------------------------------------
+# Snowflake S3 Integration Configuration
+# -----------------------------------------------------------------------------
+# Get these values after creating storage integration in Snowflake:
+
+# STEP 1: Create storage integration (run in Snowflake):
+#   CREATE OR REPLACE STORAGE INTEGRATION supplyChainS3Integration
+#   TYPE = EXTERNAL_STAGE
+#   STORAGE_PROVIDER = S3
+#   ENABLED = TRUE
+#   STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::YOUR_ACCOUNT_ID:role/snowflakeS3AccessRole'
+#   STORAGE_ALLOWED_LOCATIONS = ('s3://your-bucket-name/processed/');
+
+# STEP 2: Get values (run in Snowflake):
+#   DESC STORAGE INTEGRATION supplyChainS3Integration;
+#   Copy STORAGE_AWS_IAM_USER_ARN and STORAGE_AWS_EXTERNAL_ID
+
+# Snowflake IAM user ARN from storage integration
+snowflakeIamUserArn = "arn:aws:iam::ACCOUNT_ID:user/USER_NAME"
+
+# Snowflake external ID from storage integration
+snowflakeExternalId = "YOUR_EXTERNAL_ID_FROM_SNOWFLAKE"
