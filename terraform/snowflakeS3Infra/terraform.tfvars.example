@@ -12,6 +12,10 @@
 # Get value: aws configure get region
 awsRegion = "us-east-1"
 
+# Your AWS account ID (required for Phase 1)
+# Get value: aws sts get-caller-identity --query Account --output text
+yourAwsAccountId = "123456789012"
+
 # S3 bucket name containing processed files
 # Get value: aws s3 ls
 s3BucketName = "your-bucket-name"
@@ -21,24 +25,25 @@ s3BucketName = "your-bucket-name"
 s3ProcessedPrefix = "processed/"
 
 # -----------------------------------------------------------------------------
-# Snowflake S3 Integration Configuration
+# Snowflake S3 Integration Configuration (Phase 2)
 # -----------------------------------------------------------------------------
-# Get these values after creating storage integration in Snowflake:
+# Leave these empty for Phase 1, fill after creating storage integration:
 
-# STEP 1: Create storage integration (run in Snowflake):
-#   CREATE OR REPLACE STORAGE INTEGRATION supplyChainS3Integration
-#   TYPE = EXTERNAL_STAGE
-#   STORAGE_PROVIDER = S3
-#   ENABLED = TRUE
-#   STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::YOUR_ACCOUNT_ID:role/snowflakeS3AccessRole'
-#   STORAGE_ALLOWED_LOCATIONS = ('s3://your-bucket-name/processed/');
+# PHASE 1: Create role with your account ID
+#   - Set yourAwsAccountId above
+#   - Leave snowflakeIamUserArn and snowflakeExternalId empty
+#   - Run: terraform apply
 
-# STEP 2: Get values (run in Snowflake):
-#   DESC STORAGE INTEGRATION supplyChainS3Integration;
-#   Copy STORAGE_AWS_IAM_USER_ARN and STORAGE_AWS_EXTERNAL_ID
+# PHASE 2: Update trust policy with Snowflake values
+#   - Create storage integration in Snowflake using the role ARN from Phase 1
+#   - Get values using: python3 extractSnowflakeAwsAccountId.py
+#   - Fill snowflakeIamUserArn and snowflakeExternalId below
+#   - Run: terraform apply again
 
-# Snowflake IAM user ARN from storage integration
-snowflakeIamUserArn = "arn:aws:iam::ACCOUNT_ID:user/USER_NAME"
+# Snowflake IAM user ARN from storage integration (Phase 2 only)
+# Leave empty for Phase 1, fill after creating storage integration
+snowflakeIamUserArn = ""
 
-# Snowflake external ID from storage integration
-snowflakeExternalId = "YOUR_EXTERNAL_ID_FROM_SNOWFLAKE"
+# Snowflake external ID from storage integration (Phase 2 only)
+# Leave empty for Phase 1, fill after creating storage integration
+snowflakeExternalId = ""

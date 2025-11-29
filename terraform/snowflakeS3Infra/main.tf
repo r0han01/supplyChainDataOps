@@ -17,18 +17,32 @@ locals {
   roleName = "snowflakeS3AccessRole"
 }
 
+locals {
+  # Phase 1: Use your AWS account ID if Snowflake values not provided
+  # Phase 2: Use Snowflake IAM user ARN if provided
+  trustPrincipal = var.snowflakeIamUserArn != "" ? var.snowflakeIamUserArn : "arn:aws:iam::${var.yourAwsAccountId}:root"
+  
+  # Only add External ID condition if Snowflake values are provided
+  hasSnowflakeValues = var.snowflakeIamUserArn != "" && var.snowflakeExternalId != ""
+}
+
 data "aws_iam_policy_document" "trust" {
   statement {
     effect = "Allow"
     principals {
       type        = "AWS"
-      identifiers = [var.snowflakeIamUserArn]
+      identifiers = [local.trustPrincipal]
     }
     actions = ["sts:AssumeRole"]
-    condition {
-      test     = "StringEquals"
-      variable = "sts:ExternalId"
-      values   = [var.snowflakeExternalId]
+    
+    # Only add External ID condition in Phase 2 (when Snowflake values exist)
+    dynamic "condition" {
+      for_each = local.hasSnowflakeValues ? [1] : []
+      content {
+        test     = "StringEquals"
+        variable = "sts:ExternalId"
+        values   = [var.snowflakeExternalId]
+      }
     }
   }
 }

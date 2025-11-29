@@ -4,6 +4,11 @@ variable "awsRegion" {
   default     = "us-east-1"
 }
 
+variable "yourAwsAccountId" {
+  description = "Your AWS account ID (used for initial role creation)"
+  type        = string
+}
+
 variable "s3BucketName" {
   description = "S3 bucket name containing processed files"
   type        = string
@@ -16,11 +21,13 @@ variable "s3ProcessedPrefix" {
 }
 
 variable "snowflakeIamUserArn" {
-  description = "Snowflake IAM user ARN from storage integration"
+  description = "Snowflake IAM user ARN from storage integration (leave empty for Phase 1)"
   type        = string
+  default     = ""
 }
 
 variable "snowflakeExternalId" {
-  description = "Snowflake external ID from storage integration"
+  description = "Snowflake external ID from storage integration (leave empty for Phase 1)"
   type        = string
+  default     = ""
 }
