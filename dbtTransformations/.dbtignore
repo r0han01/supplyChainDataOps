@@ -1,0 +1,24 @@
+# dbt ignore patterns
+# Files/directories to ignore during dbt parsing
+
+# Compiled and run outputs
+target/
+dbt_packages/
+
+# Logs
+logs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+!README.md
+

@@ -1,0 +1,44 @@
+# =============================================================================
+# dbt Snowflake Connection Profile
+# =============================================================================
+# Copy this file to ~/.dbt/profiles.yml and fill in your Snowflake credentials:
+#   cp profiles.yml.example ~/.dbt/profiles.yml
+#
+# Note: This file should NOT be committed to Git (contains sensitive credentials)
+# =============================================================================
+
+supply_chain:
+  outputs:
+    dev:
+      type: snowflake
+      account: your_account_identifier  # e.g., ABC12345-XY67890 or account_locator.region.cloud
+      user: your_username                # Snowflake username
+      password: your_password            # Snowflake password
+      warehouse: COMPUTE_WH               # Warehouse name
+      database: SUPPLYCHAINDB            # Database name
+      schema: analyticalData             # Default schema
+      threads: 4                         # Number of parallel threads
+      client_session_keep_alive: false
+    prod:
+      type: snowflake
+      account: your_account_identifier
+      user: your_username
+      password: your_password
+      warehouse: COMPUTE_WH
+      database: SUPPLYCHAINDB
+      schema: analyticalData
+      threads: 4
+      client_session_keep_alive: false
+  target: dev  # Default target (dev or prod)
+
+# =============================================================================
+# How to Get Your Values:
+# =============================================================================
+# Account: Found in Snowflake URL or account settings
+# User: Your Snowflake username
+# Password: Your Snowflake password
+# Warehouse: SHOW WAREHOUSES; in Snowflake
+# Database: SHOW DATABASES; in Snowflake (should be SUPPLYCHAINDB)
+# Schema: Default schema for this project (analyticalData)
+# =============================================================================
+
