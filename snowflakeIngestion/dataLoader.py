@@ -5,6 +5,7 @@ Loads processed data from S3 into Snowflake tables using COPY INTO commands.
 """
 import os
 import sys
+import re
 
 try:
     import snowflake.connector
@@ -12,6 +13,17 @@ except ImportError:
     print("❌ snowflake-connector-python not installed")
     print("   Install: pip install snowflake-connector-python")
     sys.exit(1)
+
+
+def to_camel_case(name):
+    """Convert column name to camelCase"""
+    # Remove quotes and spaces, convert to camelCase
+    name = name.strip('"').strip()
+    # Split by spaces and special characters
+    parts = re.split(r'[\s_()]+', name)
+    # First part lowercase, rest capitalize
+    camel = parts[0].lower() + ''.join(word.capitalize() for word in parts[1:] if word)
+    return camel
 
 
 class SnowflakeDataLoader:
@@ -70,59 +82,59 @@ class SnowflakeDataLoader:
             cursor.close()
 
     def _create_orders_table(self, conn):
-        """Create supply chain orders table"""
+        """Create supply chain orders table with camelCase columns"""
         cursor = conn.cursor()
         sql = f"""
         CREATE TABLE IF NOT EXISTS {self.database}.{self.schema}.dataCoSupplyChainOrders (
-            "Type" VARCHAR(50),
-            "Days for shipping (real)" INT,
-            "Days for shipment (scheduled)" INT,
-            "Benefit per order" FLOAT,
-            "Sales per customer" FLOAT,
-            "Delivery Status" VARCHAR(50),
-            "Late_delivery_risk" INT,
-            "Category Id" INT,
-            "Category Name" VARCHAR(100),
-            "Customer City" VARCHAR(100),
-            "Customer Country" VARCHAR(100),
-            "Customer Fname" VARCHAR(100),
-            "Customer Id" INT,
-            "Customer Lname" VARCHAR(100),
-            "Customer Segment" VARCHAR(50),
-            "Customer State" VARCHAR(100),
-            "Customer Street" VARCHAR(200),
-            "Customer Zipcode" VARCHAR(20),
-            "Department Id" INT,
-            "Department Name" VARCHAR(100),
-            "Latitude" FLOAT,
-            "Longitude" FLOAT,
-            "Market" VARCHAR(50),
-            "Order City" VARCHAR(100),
-            "Order Country" VARCHAR(100),
-            "Order Customer Id" INT,
-            "order date (DateOrders)" TIMESTAMP_NTZ,
-            "Order Id" INT,
-            "Order Item Cardprod Id" INT,
-            "Order Item Discount" FLOAT,
-            "Order Item Discount Rate" FLOAT,
-            "Order Item Id" INT,
-            "Order Item Product Price" FLOAT,
-            "Order Item Profit Ratio" FLOAT,
-            "Order Item Quantity" INT,
-            "Sales" FLOAT,
-            "Order Item Total" FLOAT,
-            "Order Profit Per Order" FLOAT,
-            "Order Region" VARCHAR(50),
-            "Order State" VARCHAR(100),
-            "Order Status" VARCHAR(50),
-            "Order Zipcode" VARCHAR(20),
-            "Product Card Id" INT,
-            "Product Category Id" INT,
-            "Product Image" VARCHAR(200),
-            "Product Name" VARCHAR(200),
-            "Product Price" FLOAT,
-            "shipping date (DateOrders)" TIMESTAMP_NTZ,
-            "Shipping Mode" VARCHAR(50),
+            type VARCHAR(50),
+            daysForShippingReal INT,
+            daysForShipmentScheduled INT,
+            benefitPerOrder FLOAT,
+            salesPerCustomer FLOAT,
+            deliveryStatus VARCHAR(50),
+            lateDeliveryRisk INT,
+            categoryId INT,
+            categoryName VARCHAR(100),
+            customerCity VARCHAR(100),
+            customerCountry VARCHAR(100),
+            customerFname VARCHAR(100),
+            customerId INT,
+            customerLname VARCHAR(100),
+            customerSegment VARCHAR(50),
+            customerState VARCHAR(100),
+            customerStreet VARCHAR(200),
+            customerZipcode VARCHAR(20),
+            departmentId INT,
+            departmentName VARCHAR(100),
+            latitude FLOAT,
+            longitude FLOAT,
+            market VARCHAR(50),
+            orderCity VARCHAR(100),
+            orderCountry VARCHAR(100),
+            orderCustomerId INT,
+            orderDate TIMESTAMP_NTZ,
+            orderId INT,
+            orderItemCardprodId INT,
+            orderItemDiscount FLOAT,
+            orderItemDiscountRate FLOAT,
+            orderItemId INT,
+            orderItemProductPrice FLOAT,
+            orderItemProfitRatio FLOAT,
+            orderItemQuantity INT,
+            sales FLOAT,
+            orderItemTotal FLOAT,
+            orderProfitPerOrder FLOAT,
+            orderRegion VARCHAR(50),
+            orderState VARCHAR(100),
+            orderStatus VARCHAR(50),
+            orderZipcode VARCHAR(20),
+            productCardId INT,
+            productCategoryId INT,
+            productImage VARCHAR(200),
+            productName VARCHAR(200),
+            productPrice FLOAT,
+            shippingDate TIMESTAMP_NTZ,
+            shippingMode VARCHAR(50),
             profitMarginPct FLOAT,
             profitCategory VARCHAR(50),
             deliveryDelay INT,
@@ -140,18 +152,18 @@ class SnowflakeDataLoader:
             cursor.close()
 
     def _create_clickstream_table(self, conn):
-        """Create clickstream events table"""
+        """Create clickstream events table with camelCase columns"""
         cursor = conn.cursor()
         sql = f"""
         CREATE TABLE IF NOT EXISTS {self.database}.{self.schema}.clickstreamEvents (
-            "Product" VARCHAR(200),
-            "Category" VARCHAR(100),
-            "Date" TIMESTAMP_NTZ,
-            "Month" VARCHAR(10),
-            "Hour" INT,
-            "Department" VARCHAR(100),
-            "ip" VARCHAR(50),
-            "url" VARCHAR(500),
+            product VARCHAR(200),
+            category VARCHAR(100),
+            date TIMESTAMP_NTZ,
+            month VARCHAR(10),
+            hour INT,
+            department VARCHAR(100),
+            ip VARCHAR(50),
+            url VARCHAR(500),
             eventYear INT,
             eventMonth INT,
             eventQuarter VARCHAR(10),
@@ -172,15 +184,41 @@ class SnowflakeDataLoader:
             cursor.close()
 
     def _load_from_s3(self, conn, table_name, s3_file, file_format_name):
-        """Load data from S3 into Snowflake table"""
+        """Load data from S3 into Snowflake table with column mapping"""
         cursor = conn.cursor()
-        sql = f"""
-        COPY INTO {self.database}.{self.schema}.{table_name}
-        FROM 's3://{self.s3_bucket}/{self.s3_prefix}{s3_file}'
-        STORAGE_INTEGRATION = {self.storage_integration}
-        FILE_FORMAT = {file_format_name}
-        ON_ERROR = 'CONTINUE';
-        """
+        
+        # Use COPY INTO with explicit column mapping
+        # Snowflake maps CSV columns by position to table columns
+        if table_name == "dataCoSupplyChainOrders":
+            sql = f"""
+            COPY INTO {self.database}.{self.schema}.{table_name}
+            (type, daysForShippingReal, daysForShipmentScheduled, benefitPerOrder, salesPerCustomer,
+             deliveryStatus, lateDeliveryRisk, categoryId, categoryName, customerCity, customerCountry,
+             customerFname, customerId, customerLname, customerSegment, customerState, customerStreet,
+             customerZipcode, departmentId, departmentName, latitude, longitude, market, orderCity,
+             orderCountry, orderCustomerId, orderDate, orderId, orderItemCardprodId, orderItemDiscount,
+             orderItemDiscountRate, orderItemId, orderItemProductPrice, orderItemProfitRatio,
+             orderItemQuantity, sales, orderItemTotal, orderProfitPerOrder, orderRegion, orderState,
+             orderStatus, orderZipcode, productCardId, productCategoryId, productImage, productName,
+             productPrice, shippingDate, shippingMode, profitMarginPct, profitCategory, deliveryDelay,
+             orderYear, orderMonth, orderQuarter, orderDayOfWeek, orderHour, isLate)
+            FROM 's3://{self.s3_bucket}/{self.s3_prefix}{s3_file}'
+            STORAGE_INTEGRATION = {self.storage_integration}
+            FILE_FORMAT = {file_format_name}
+            ON_ERROR = 'CONTINUE';
+            """
+        else:  # clickstreamEvents
+            sql = f"""
+            COPY INTO {self.database}.{self.schema}.{table_name}
+            (product, category, date, month, hour, department, ip, url, eventYear, eventMonth,
+             eventQuarter, eventDayOfWeek, eventHourOfDay, isCartAdd, eventType, sessionDate,
+             pageType, sessionID, isWeekend, timeOfDay)
+            FROM 's3://{self.s3_bucket}/{self.s3_prefix}{s3_file}'
+            STORAGE_INTEGRATION = {self.storage_integration}
+            FILE_FORMAT = {file_format_name}
+            ON_ERROR = 'CONTINUE';
+            """
+        
         try:
             cursor.execute(sql)
             results = cursor.fetchall()
