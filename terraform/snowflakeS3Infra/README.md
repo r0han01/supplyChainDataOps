@@ -135,8 +135,33 @@ The code automatically switches between phases based on whether Snowflake values
 - `variables.tf` - Input variables
 - `outputs.tf` - Role ARN output
 - `terraform.tfvars.example` - Configuration template
-- `extractSnowflakeAwsAccountId.py` - Extract account ID from storage integration
+- `extractSnowflakeAwsAccountId.py` - Extract Snowflake AWS account ID from storage integration
 - `env.example` - Snowflake credentials template
+
+### extractSnowflakeAwsAccountId.py
+
+Python script that connects to Snowflake and extracts the AWS account ID from the storage integration's IAM user ARN.
+
+**Usage:**
+```bash
+export SNOWFLAKE_ACCOUNT="YOUR_ACCOUNT"
+export SNOWFLAKE_USER="your_username"
+export SNOWFLAKE_PASSWORD="your_password"
+python3 extractSnowflakeAwsAccountId.py
+```
+
+**What it does:**
+- Connects to Snowflake using environment variables
+- Queries the storage integration properties
+- Extracts IAM user ARN and External ID
+- Displays the AWS account ID embedded in the IAM user ARN
+
+**Output:**
+- IAM User ARN: `arn:aws:iam::987654321098:user/abc123`
+- External ID: `ACCOUNT_SFCRole=6_ExampleId=`
+- AWS Account ID: `987654321098`
+
+Use these values in `terraform.tfvars` for Phase 3.
 
 ## Quick Reference
 
