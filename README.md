@@ -25,14 +25,6 @@ graph TB
     D -->|dataLoader.py| E[Snowflake<br/>Data Warehouse]
     E -->|dbt Transformations| F[Analytics Marts<br/>Staging → Dimensions → Facts]
     F -->|Sigma Computing| G[Interactive BI Dashboard]
-    
-    style A fill:#e1f5ff
-    style B fill:#ffebee
-    style C fill:#ffebee
-    style D fill:#fff3e0
-    style E fill:#e8f5e9
-    style F fill:#e8f5e9
-    style G fill:#f3e5f5
 ```
 
 **Pipeline Flow:**
