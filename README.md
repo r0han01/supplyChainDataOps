@@ -6,7 +6,7 @@
 
 <!-- Dashboard Image Placeholder -->
 <div align="center">
-  <img src="your-dashboard-screenshot.png" alt="Supply Chain Analytics Dashboard" width="800"/>
+  <img src="https://github.com/user-attachments/assets/e5b423ed-e316-4928-b482-4445baebca43" alt="Supply Chain Analytics Dashboard" width="800"/>
 </div>
 
 </div>
