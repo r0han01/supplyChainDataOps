@@ -105,17 +105,18 @@ Visual ETL workflows that clean, standardize, and enrich raw datasets. Adds calc
 ### ☁️ Terraform (Infrastructure as Code)
 Provisions AWS IAM roles with S3 read permissions for Snowflake storage integration. Two-phase approach for secure credential management.
 
-📖 [Details →](./terraform/README.md)
+[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/3857b7e3-c685-4da9-8c62-cfd4f4d64eba" />](./terraform/README.md)
+
 
 ### ❄️ Snowflake Data Warehouse
 Loads processed data from S3 into Snowflake using `COPY INTO` commands. Creates structured schemas (RAWDATA, ANALYTICALDATA, MARTDATA).
 
-📖 [Details →](./snowflakeIngestion/README.md)
+[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/074552a3-98ab-42a4-87b7-09ebbf876ae8" />](./snowflakeIngestion/README.md)
 
 ### 🔧 dbt Transformations
 SQL-based data modeling following best practices: staging → dimensions → facts → analytics marts. Creates reusable, tested data models.
 
-📖 [Details →](./dbtTransformations/README.md)
+[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/8f20d3c1-4566-4ca7-a8d8-d0c0c1c4e0a5" />](./dbtTransformations/README.md)
 
 ---
 
