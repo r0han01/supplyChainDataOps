@@ -13,5 +13,8 @@ kagglehub
 # Snowflake Integration
 snowflake-connector-python
 
+# Data Transformations
+dbt-snowflake
+
 # Environment Variables
 python-dotenv
