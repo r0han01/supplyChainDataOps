@@ -99,7 +99,8 @@ Automated pipeline using Kaggle API and boto3. Downloads datasets and uploads to
 ### 🔄 Alteryx Designer Cloud
 Visual ETL workflows that clean, standardize, and enrich raw datasets. Adds calculated fields, temporal patterns, and session tracking.
 
-📖 [Details →](./alteryxWorkflows/README.md)
+[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/372b539d-8c4d-41ba-842a-9f8abf29b7d2" />](./alteryxWorkflows/README.md)
+
 
 ### ☁️ Terraform (Infrastructure as Code)
 Provisions AWS IAM roles with S3 read permissions for Snowflake storage integration. Two-phase approach for secure credential management.
