@@ -1,6 +1,6 @@
-# Supply Chain Analytics Pipeline
+# Modern Data Stack: Supply Chain Analytics (2025)
 
-> From raw data to business insights in one pipeline. 180K orders, 470K clickstream events, and some pretty interesting findings.
+> A production-ready data pipeline showcasing AWS S3, Alteryx, Terraform, Snowflake, dbt, and Sigma Computing
 
 <!-- Dashboard Image Placeholder -->
 <!-- Add your Sigma dashboard screenshot here -->
@@ -9,32 +9,59 @@
 
 ## What This Is
 
-A complete data pipeline that takes messy supply chain data and turns it into actionable insights. We found some wild stuff: **20% of orders are losing money** ($7.65M at risk), **revenue dropped 97% in 2018**, and the Consumer segment is carrying 52% of revenue.
+A complete end-to-end data pipeline demonstrating modern data engineering and business intelligence tools. We process **180K+ supply chain orders** and **470K+ clickstream events** through a multi-stage architecture that transforms raw data into actionable business insights.
 
-Built with real tools you'd actually use in production: AWS S3, Snowflake, dbt, and Sigma. No toy examples here.
+This project showcases real-world data engineering practices: automated data ingestion, cloud storage, visual ETL, infrastructure as code, data warehousing, SQL transformations, and interactive BI dashboards.
 
 ---
 
-## The Pipeline
+## Architecture
 
+```mermaid
+graph TB
+    A[Kaggle Dataset] -->|dataFetcher.py| B[AWS S3<br/>Raw Data]
+    B -->|Alteryx Designer Cloud| C[AWS S3<br/>Processed Data]
+    C -->|Terraform| D[AWS IAM Role<br/>Snowflake Integration]
+    D -->|dataLoader.py| E[Snowflake<br/>Data Warehouse]
+    E -->|dbt Transformations| F[Analytics Marts<br/>Staging → Dimensions → Facts]
+    F -->|Sigma Computing| G[Interactive BI Dashboard]
+    
+    style A fill:#e1f5ff
+    style B fill:#ffebee
+    style C fill:#ffebee
+    style D fill:#fff3e0
+    style E fill:#e8f5e9
+    style F fill:#e8f5e9
+    style G fill:#f3e5f5
 ```
-Kaggle → S3 → Alteryx → Snowflake → dbt → Sigma
-```
 
-**What happens:**
-1. Download data from Kaggle, upload to S3
-2. Clean and enrich with Alteryx (add profit margins, session tracking, etc.)
-3. Load into Snowflake data warehouse
-4. Transform with dbt (staging → dimensions → facts → analytics marts)
-5. Visualize in Sigma dashboard
+**Pipeline Flow:**
+1. **Data Ingestion** - Automated download from Kaggle API to AWS S3
+2. **Data Preparation** - Alteryx Designer Cloud workflows clean and enrich data
+3. **Infrastructure** - Terraform provisions AWS IAM roles for secure Snowflake access
+4. **Data Warehouse** - Snowflake stores and organizes data in structured schemas
+5. **Transformations** - dbt models create analytics-ready datasets (staging → dimensions → facts → marts)
+6. **Visualization** - Sigma Computing dashboard provides interactive business intelligence
 
-Each step has its own folder with detailed instructions. This README just gives you the big picture.
+---
+
+## Tech Stack
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| **Data Source** | Kaggle API | Automated dataset downloads |
+| **Storage** | AWS S3 | Data lake (raw & processed layers) |
+| **ETL** | Alteryx Designer Cloud | Visual data preparation workflows |
+| **Infrastructure** | Terraform | Infrastructure as Code (AWS IAM) |
+| **Data Warehouse** | Snowflake | Centralized analytics database |
+| **Transformations** | dbt (data build tool) | SQL-based data modeling |
+| **BI & Analytics** | Sigma Computing | Interactive dashboards |
 
 ---
 
 ## Quick Start
 
-**Prerequisites:** Python 3.8+, AWS account, Snowflake account, Alteryx access, Terraform, dbt
+**Prerequisites:** Python 3.8+, AWS account, Snowflake account, Alteryx access, Terraform, dbt-snowflake
 
 ```bash
 # 1. Setup
@@ -42,62 +69,95 @@ Each step has its own folder with detailed instructions. This README just gives 
 cp .env.example .env  # Add your credentials
 
 # 2. Run the pipeline
-python dataFetcher/dataFetcher.py              # Fetch data
+python dataFetcher/dataFetcher.py              # Fetch data → S3
 # Then follow instructions in each folder:
-# - alteryxWorkflows/README.md
-# - terraform/README.md  
-# - snowflakeIngestion/README.md
-# - dbtTransformations/README.md
+# - alteryxWorkflows/README.md (Alteryx ETL)
+# - terraform/README.md (Infrastructure setup)
+# - snowflakeIngestion/README.md (Snowflake loading)
+# - dbtTransformations/README.md (dbt transformations)
 ```
 
-That's it. Each component folder has step-by-step guides.
+Each component folder has detailed step-by-step guides.
 
 ---
 
-## What's Inside
+## Project Structure
 
-| Folder | What It Does |
-|--------|-------------|
-| `dataFetcher/` | Downloads from Kaggle, uploads to S3 |
-| `alteryxWorkflows/` | Cleans data, adds enrichment fields |
-| `terraform/` | Sets up AWS IAM for Snowflake access |
-| `snowflakeIngestion/` | Loads processed data into Snowflake |
-| `dbtTransformations/` | SQL models: staging → dimensions → facts → marts |
-| `rawData (reference only)/` | Sample files (15 rows each) for reference |
-
----
-
-## The Dashboard
-
-Built a Sigma dashboard that connects to the `MARTSALESPERFORMANCE` table in Snowflake. Shows revenue trends, profit margins, customer segments, and product performance.
-
-**Key insights it reveals:**
-- Revenue dropped 97% in 2018 (yikes)
-- 20% of orders have negative margins ($7.65M at risk)
-- Consumer segment = 52% of revenue
-- Top 3 categories = 42% of revenue
-
-**To recreate:** Connect Sigma to Snowflake, point it at `SUPPLYCHAINDB.ANALYTICALDATA_MARTDATA.MARTSALESPERFORMANCE`, and build away. The dashboard image above shows what it looks like.
+```
+Project/
+├── dataFetcher/              # Kaggle → S3 automated pipeline
+├── alteryxWorkflows/         # Alteryx ETL workflows & formulas
+├── terraform/                # Terraform IaC (AWS IAM)
+├── snowflakeIngestion/       # S3 → Snowflake data loader
+├── dbtTransformations/       # dbt SQL transformation models
+├── rawData (reference only)/ # Sample raw data (15 rows)
+└── processedData (reference only)/ # Sample processed data
+```
 
 ---
 
-## Tech Stack
+## Components
 
-- **Storage:** AWS S3 (data lake)
-- **ETL:** Alteryx Designer Cloud
-- **Infrastructure:** Terraform (AWS IAM)
-- **Warehouse:** Snowflake
-- **Transformations:** dbt
-- **BI:** Sigma Computing
+### 📥 Data Fetcher (Python + AWS S3)
+Automated pipeline using Kaggle API and boto3. Downloads datasets and uploads to S3 data lake.
+
+📖 [Details →](./dataFetcher/README.md)
+
+### 🔄 Alteryx Designer Cloud
+Visual ETL workflows that clean, standardize, and enrich raw datasets. Adds calculated fields, temporal patterns, and session tracking.
+
+📖 [Details →](./alteryxWorkflows/README.md)
+
+### ☁️ Terraform (Infrastructure as Code)
+Provisions AWS IAM roles with S3 read permissions for Snowflake storage integration. Two-phase approach for secure credential management.
+
+📖 [Details →](./terraform/README.md)
+
+### ❄️ Snowflake Data Warehouse
+Loads processed data from S3 into Snowflake using `COPY INTO` commands. Creates structured schemas (RAWDATA, ANALYTICALDATA, MARTDATA).
+
+📖 [Details →](./snowflakeIngestion/README.md)
+
+### 🔧 dbt Transformations
+SQL-based data modeling following best practices: staging → dimensions → facts → analytics marts. Creates reusable, tested data models.
+
+📖 [Details →](./dbtTransformations/README.md)
+
+---
+
+## Visualization: Sigma Dashboard
+
+The final layer uses **Sigma Computing** to create interactive business intelligence dashboards connected directly to Snowflake analytics marts.
+
+**Connection:** Sigma → Snowflake → `MARTSALESPERFORMANCE` table
+
+**Features:**
+- Real-time data from Snowflake analytics marts
+- Interactive KPI cards and charts
+- Professional design with consistent color schemes
+- Drill-down capabilities for deeper analysis
+
+**To recreate:** Connect Sigma to Snowflake, select the analytics mart tables, and build visualizations. See dashboard screenshot above for reference.
 
 ---
 
 ## Data
 
-- **Source:** [DataCo Supply Chain Dataset](https://data.mendeley.com/datasets/8gx2fvg2k6/5) (Mendeley)
-- **Orders:** 180,519 rows → 58 columns (after enrichment)
-- **Clickstream:** 469,977 rows → 20 columns (after enrichment)
-- **Analytics Marts:** Pre-aggregated tables for fast queries
+- **Source:** [DataCo Supply Chain Dataset](https://data.mendeley.com/datasets/8gx2fvg2k6/5) (Mendeley Research)
+- **Orders:** 180,519 rows, 53 columns → 58 columns (after Alteryx enrichment)
+- **Clickstream:** 469,977 rows, 8 columns → 20 columns (after Alteryx enrichment)
+- **Analytics Marts:** Pre-aggregated tables optimized for BI queries
+
+---
+
+## Environment Variables
+
+See `.env.example` for required credentials:
+- Kaggle API token
+- AWS credentials (S3 access)
+- Snowflake connection details
+
+**Important:** Never commit `.env` to Git.
 
 ---
 
@@ -107,4 +167,4 @@ MIT - See [LICENSE](./LICENSE)
 
 ---
 
-**Questions?** Check the README in each folder. They have all the details.
+**Built with:** Python, AWS S3, Alteryx, Terraform, Snowflake, dbt, Sigma Computing
