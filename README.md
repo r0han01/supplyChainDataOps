@@ -15,7 +15,12 @@
 </div>
 <img width="24" height="24" alt="image" src="" />
 
-
+<!-- Dashboard Image Placeholder -->
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/80f2869f-ae85-4e4e-8e7d-db7fbf7a9220" alt="snowflake" height="32" width="32" style="margin: 0 10px/>
+</div>
+<img width="24" height="24" alt="image" src="" />
+  
 <!-- Tech Stack Icons -->
 <div align="center">
   <br/>
