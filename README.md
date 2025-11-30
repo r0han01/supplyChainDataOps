@@ -9,6 +9,13 @@
   <img src="https://github.com/user-attachments/assets/e5b423ed-e316-4928-b482-4445baebca43" alt="Supply Chain Analytics Dashboard" width="800"/>
 </div>
 
+<!-- Dashboard Image Placeholder -->
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/4a618d88-3f0a-4242-8c0a-f7aae1bec289" alt="Dbt--Streamline-Svg-Logos" width="800"/>
+</div>
+<img width="24" height="24" alt="image" src="" />
+
+
 <!-- Tech Stack Icons -->
 <div align="center">
   <br/>
