@@ -93,7 +93,7 @@ Project/
 ### 📥 Data Fetcher (Python + AWS S3)
 Automated pipeline using Kaggle API and boto3. Downloads datasets and uploads to S3 data lake.
 
-[<img width="1900" height="858" src="https://github.com/user-attachments/assets/3535a7a7-3920-40b0-876e-2a36e508524f" />](./dataFetcher/README.md)
+[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/962dff3d-9881-4733-898e-5f5740aed79a" />](./dataFetcher/README.md)
 
 
 ### 🔄 Alteryx Designer Cloud
