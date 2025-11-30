@@ -17,7 +17,7 @@
 
 <!-- Dashboard Image Placeholder -->
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/80f2869f-ae85-4e4e-8e7d-db7fbf7a9220" alt="snowflake" height="32" width="32" style="margin: 0 10px/>
+  <img src="https://github.com/user-attachments/assets/e400e3ae-8be1-4542-9119-bb1305087a85" alt="snowflake" height="32" width="32" style="margin: 0 10px/>
 </div>
 <img width="24" height="24" alt="image" src="" />
   
