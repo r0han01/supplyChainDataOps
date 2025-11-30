@@ -1,9 +1,15 @@
+<div align="center">
+
 # Modern Data Stack: Supply Chain Analytics (2025)
 
 > A production-ready data pipeline showcasing AWS S3, Alteryx, Terraform, Snowflake, dbt, and Sigma Computing
 
 <!-- Dashboard Image Placeholder -->
-<!-- Add your Sigma dashboard screenshot here -->
+<div align="center">
+  <img src="your-dashboard-screenshot.png" alt="Supply Chain Analytics Dashboard" width="800"/>
+</div>
+
+</div>
 
 ---
 
@@ -17,6 +23,8 @@ This project showcases real-world data engineering practices: automated data ing
 
 ## Architecture
 
+<div align="center">
+
 ```mermaid
 graph TB
     A[Kaggle Dataset] -->|dataFetcher.py| B[AWS S3<br/>Raw Data]
@@ -26,6 +34,8 @@ graph TB
     E -->|dbt Transformations| F[Analytics Marts<br/>Staging → Dimensions → Facts]
     F -->|Sigma Computing| G[Interactive BI Dashboard]
 ```
+
+</div>
 
 **Pipeline Flow:**
 1. **Data Ingestion** - Automated download from Kaggle API to AWS S3
@@ -39,6 +49,8 @@ graph TB
 
 ## Tech Stack
 
+<div align="center">
+
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
 | **Data Source** | Kaggle API | Automated dataset downloads |
@@ -48,6 +60,8 @@ graph TB
 | **Data Warehouse** | Snowflake | Centralized analytics database |
 | **Transformations** | dbt (data build tool) | SQL-based data modeling |
 | **BI & Analytics** | Sigma Computing | Interactive dashboards |
+
+</div>
 
 ---
 
@@ -93,30 +107,47 @@ Project/
 ### 📥 Data Fetcher (Python + AWS S3)
 Automated pipeline using Kaggle API and boto3. Downloads datasets and uploads to S3 data lake.
 
-[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/962dff3d-9881-4733-898e-5f5740aed79a" />](./dataFetcher/README.md)
+<div align="center">
 
+[<img width="486" height="53" alt="Data Fetcher" src="https://github.com/user-attachments/assets/962dff3d-9881-4733-898e-5f5740aed79a" />](./dataFetcher/README.md)
+
+</div>
 
 ### 🔄 Alteryx Designer Cloud
 Visual ETL workflows that clean, standardize, and enrich raw datasets. Adds calculated fields, temporal patterns, and session tracking.
 
-[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/372b539d-8c4d-41ba-842a-9f8abf29b7d2" />](./alteryxWorkflows/README.md)
+<div align="center">
 
+[<img width="486" height="53" alt="Alteryx Workflows" src="https://github.com/user-attachments/assets/372b539d-8c4d-41ba-842a-9f8abf29b7d2" />](./alteryxWorkflows/README.md)
+
+</div>
 
 ### ☁️ Terraform (Infrastructure as Code)
 Provisions AWS IAM roles with S3 read permissions for Snowflake storage integration. Two-phase approach for secure credential management.
 
-[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/3857b7e3-c685-4da9-8c62-cfd4f4d64eba" />](./terraform/README.md)
+<div align="center">
 
+[<img width="486" height="53" alt="Terraform Infrastructure" src="https://github.com/user-attachments/assets/3857b7e3-c685-4da9-8c62-cfd4f4d64eba" />](./terraform/README.md)
+
+</div>
 
 ### ❄️ Snowflake Data Warehouse
 Loads processed data from S3 into Snowflake using `COPY INTO` commands. Creates structured schemas (RAWDATA, ANALYTICALDATA, MARTDATA).
 
-[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/074552a3-98ab-42a4-87b7-09ebbf876ae8" />](./snowflakeIngestion/README.md)
+<div align="center">
+
+[<img width="486" height="53" alt="Snowflake Ingestion" src="https://github.com/user-attachments/assets/074552a3-98ab-42a4-87b7-09ebbf876ae8" />](./snowflakeIngestion/README.md)
+
+</div>
 
 ### 🔧 dbt Transformations
 SQL-based data modeling following best practices: staging → dimensions → facts → analytics marts. Creates reusable, tested data models.
 
-[<img width="486" height="53" alt="image" src="https://github.com/user-attachments/assets/8f20d3c1-4566-4ca7-a8d8-d0c0c1c4e0a5" />](./dbtTransformations/README.md)
+<div align="center">
+
+[<img width="486" height="53" alt="dbt Transformations" src="https://github.com/user-attachments/assets/8f20d3c1-4566-4ca7-a8d8-d0c0c1c4e0a5" />](./dbtTransformations/README.md)
+
+</div>
 
 ---
 
@@ -156,6 +187,8 @@ See `.env.example` for required credentials:
 
 ---
 
+<div align="center">
+
 ## License
 
 MIT - See [LICENSE](./LICENSE)
@@ -163,3 +196,5 @@ MIT - See [LICENSE](./LICENSE)
 ---
 
 **Built with:** Python, AWS S3, Alteryx, Terraform, Snowflake, dbt, Sigma Computing
+
+</div>
