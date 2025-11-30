@@ -11,7 +11,7 @@
 
 <!-- Dashboard Image Placeholder -->
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/4a618d88-3f0a-4242-8c0a-f7aae1bec289" alt="Dbt--Streamline-Svg-Logos" width="800"/>
+  <img src="https://github.com/user-attachments/assets/4a618d88-3f0a-4242-8c0a-f7aae1bec289" alt="Dbt--Streamline-Svg-Logos" height="32" width="32" style="margin: 0 10px/>
 </div>
 <img width="24" height="24" alt="image" src="" />
 
