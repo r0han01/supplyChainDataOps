@@ -56,19 +56,29 @@ The pipeline follows a modern data engineering pattern:
 
 ## Tech Stack
 
-| Component | Technology |
-|-----------|-----------|
-| Data Source | Kaggle API |
-| Storage | AWS S3 |
-| ETL | Alteryx Designer Cloud |
-| Infrastructure | Terraform |
-| Data Warehouse | Snowflake |
-| Transformations | dbt |
-| BI & Analytics | Sigma Computing |
+<div align="center">
+
+### Technologies & Tools
+
+<br/>
+
+<a href="https://www.python.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="60" height="60" style="margin: 0 20px;"/></a>
+<a href="https://aws.amazon.com/s3/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS S3" width="60" height="60" style="margin: 0 20px;"/></a>
+<a href="https://www.snowflake.com/"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/snowflake.svg" alt="Snowflake" width="60" height="60" style="margin: 0 20px;"/></a>
+<a href="https://www.getdbt.com/"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/dbt.svg" alt="dbt" width="60" height="60" style="margin: 0 20px;"/></a>
+<a href="https://www.terraform.io/"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/terraform.svg" alt="Terraform" width="60" height="60" style="margin: 0 20px;"/></a>
+<a href="https://www.alteryx.com/"><img src="https://www.alteryx.com/favicon.ico" alt="Alteryx" width="60" height="60" style="margin: 0 20px;"/></a>
+<a href="https://www.sigmacomputing.com/"><img src="https://www.sigmacomputing.com/favicon.ico" alt="Sigma Computing" width="60" height="60" style="margin: 0 20px;"/></a>
+
+<br/><br/>
+
+**Python** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **AWS S3** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Snowflake** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **dbt** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Terraform** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Alteryx** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Sigma**
+
+</div>
 
 ---
 
-## How to Use This Project
+## Installation & Configuration
 
 ### Prerequisites
 
