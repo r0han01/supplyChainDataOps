@@ -1,7 +1,11 @@
+<div align="center">
+
 # Cloud-Native Supply Chain Analytics Platform
 
 A production-ready data pipeline showcasing AWS S3, Alteryx, Terraform, Snowflake, dbt, and Sigma Computing
 
+
+## Platform & Tools
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License" height="32"></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://aws.amazon.com/s3/"><img src="https://img.shields.io/badge/AWS-S3-orange" alt="AWS S3" height="32"></a>
