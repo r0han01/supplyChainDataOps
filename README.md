@@ -16,7 +16,7 @@
 
 </div>
 
----
+<br/>
 
 ## Overview
 
@@ -26,7 +26,7 @@ End-to-end data pipeline processing **180K+ orders** and **470K+ clickstream eve
   <img src="https://github.com/user-attachments/assets/e5b423ed-e316-4928-b482-4445baebca43" alt="Supply Chain Analytics Dashboard" width="800"/>
 </div>
 
----
+<br/>
 
 ## Architecture
 
@@ -52,15 +52,11 @@ The pipeline follows a modern data engineering pattern:
 
 **Is this workflow good?** Yes. It follows industry best practices: separation of concerns (ETL vs transformations), infrastructure as code, scalable cloud architecture, and modern data stack tools. Each component has a clear responsibility, making the pipeline maintainable and production-ready.
 
----
-
-## Tech Stack
+<br/>
 
 <div align="center">
 
 ### Technologies & Tools
-
-<br/>
 
 <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" style="margin: 0 10px;"/></a>
 <a href="https://aws.amazon.com/s3/"><img src="https://img.shields.io/badge/AWS_S3-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS S3" style="margin: 0 10px;"/></a>
@@ -70,9 +66,13 @@ The pipeline follows a modern data engineering pattern:
 <a href="https://www.alteryx.com/"><img src="https://img.shields.io/badge/Alteryx-0078EF?style=for-the-badge&logo=alteryx&logoColor=white" alt="Alteryx" style="margin: 0 10px;"/></a>
 <a href="https://www.sigmacomputing.com/"><img src="https://img.shields.io/badge/Sigma-FF6B35?style=for-the-badge&logo=sigmacomputing&logoColor=white" alt="Sigma Computing" style="margin: 0 10px;"/></a>
 
+<br/>
+
+> 💡 **Prerequisites:** Make sure you have accounts ready for all services (they offer free trials). Store your credentials securely in `.env` file - see `.env.example` for required variables.
+
 </div>
 
----
+<br/>
 
 ## Installation & Configuration
 
@@ -180,7 +180,7 @@ dbt run
 
 Each component folder has detailed READMEs with step-by-step instructions and troubleshooting.
 
----
+<br/>
 
 ## Project Structure
 
@@ -195,7 +195,7 @@ Project/
 └── processedData (reference only)/ # Sample processed data
 ```
 
----
+<br/>
 
 ## Business Intelligence Dashboard
 
@@ -203,7 +203,7 @@ Project/
 
 **To recreate:** Connect Sigma to Snowflake, select analytics mart tables, and build visualizations.
 
----
+<br/>
 
 ## Dataset
 
