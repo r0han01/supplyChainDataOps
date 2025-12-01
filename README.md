@@ -275,6 +275,60 @@ While **Power BI** offers more advanced features, integrated tools, and extensiv
 
 ---
 
+## How to Contribute
+
+This project currently showcases one dashboard, but we have **4 additional analytics marts** ready for exploration:
+
+- `martSalesPerformance` - Sales metrics by time, segment, and category
+- `martOperationalPerformance` - Delivery and shipping metrics
+- `martClickstreamConversion` - Conversion funnel analysis
+- `martCustomerAnalytics` - Customer behavior and value segmentation
+- `martProductPerformance` - Product sales and profitability rankings
+
+**Create Your Own Dashboard:**
+
+You can use any BI tool to build dashboards from these marts. Popular options include:
+
+- **Sigma Computing** (cloud-native, easy setup)
+- **Microsoft Power BI** (advanced features, comprehensive toolkit)
+- **Tableau** (powerful visualizations, enterprise-grade)
+- **Looker** (data modeling focus, embedded analytics)
+- **Metabase** (open-source, self-hosted option)
+- **Apache Superset** (open-source, Python-based)
+
+**Step-by-Step Process:**
+
+1. **Complete the Pipeline Setup** (follow steps 1-7 in Installation & Configuration)
+2. **Run dbt Models** - Ensure all analytics marts are created in Snowflake:
+   ```bash
+   cd dbtTransformations
+   dbt run --select marts.analytics.*
+   ```
+3. **Connect Your BI Tool to Snowflake:**
+   - Get Snowflake connection details (account, user, password, warehouse, database)
+   - In your BI tool, create a new data source connection
+   - Select `SUPPLYCHAINDB` database → `MARTDATA` schema
+   - Choose any analytics mart table (e.g., `MARTSALESPERFORMANCE`)
+4. **Build Your Dashboard:**
+   - Create visualizations using the mart tables
+   - Experiment with different metrics and dimensions
+   - Design a professional, production-ready dashboard
+5. **Submit Your Work:**
+   - Open a Pull Request with screenshots of your dashboard
+   - Include a brief description of your analysis and insights
+   - We'll review and accept high-quality contributions!
+
+**Need Help?**
+
+If you encounter any issues or have questions:
+- **Email:** hello@rkatkam.com
+- **Subject:** `[supplyChainDataOps] <Your Issue/Question>`
+- We'll respond promptly to help you succeed!
+
+> 💡 **Pro Tip:** Start with `martSalesPerformance` - it has the most comprehensive metrics and is perfect for building your first dashboard. Once comfortable, explore the other marts for deeper insights!
+
+---
+
 ## License
 
 MIT - See [LICENSE](./LICENSE)
