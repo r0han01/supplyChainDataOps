@@ -184,18 +184,17 @@ Each component folder has detailed READMEs with step-by-step instructions and tr
 
 <br/>
 
-## Project Structure
+## Project Components
 
-```
-Project/
-├── dataFetcher/              # Kaggle → S3 pipeline
-├── alteryxWorkflows/         # Alteryx ETL workflows
-├── terraform/                # Terraform IaC
-├── snowflakeIngestion/       # S3 → Snowflake loader
-├── dbtTransformations/       # dbt SQL models
-├── rawData (reference only)/ # Sample raw data
-└── processedData (reference only)/ # Sample processed data
-```
+| Component | Purpose | Workflow | Documentation |
+|-----------|---------|----------|---------------|
+| **dataFetcher/** | Automated Kaggle dataset download and S3 upload pipeline | ```mermaid<br/>graph LR<br/>A[Kaggle API] -->|Download| B[Local Cache]<br/>B -->|Upload| C[S3 Raw Bucket]<br/>``` | [📁 README](./dataFetcher/README.md) |
+| **alteryxWorkflows/** | Visual ETL workflows for data cleaning and enrichment | ```mermaid<br/>graph LR<br/>A[S3 Raw] -->|Alteryx| B[Clean & Transform]<br/>B -->|Enrich| C[S3 Processed]<br/>``` | [📁 README](./alteryxWorkflows/README.md) |
+| **terraform/** | Infrastructure as Code for AWS IAM roles | ```mermaid<br/>graph LR<br/>A[Terraform Config] -->|Apply| B[AWS IAM Role]<br/>B -->|Trust Policy| C[Snowflake Access]<br/>``` | [📁 README](./terraform/README.md) |
+| **snowflakeIngestion/** | Python script to load processed data into Snowflake | ```mermaid<br/>graph LR<br/>A[S3 Processed] -->|COPY INTO| B[Snowflake Tables]<br/>B -->|Verify| C[RAWDATA Schema]<br/>``` | [📁 README](./snowflakeIngestion/README.md) |
+| **dbtTransformations/** | SQL-based data modeling and transformations | ```mermaid<br/>graph TB<br/>A[Raw Data] -->|Staging| B[Dimensions]<br/>A -->|Staging| C[Facts]<br/>B -->|Marts| D[Analytics]<br/>C -->|Marts| D<br/>``` | [📁 README](./dbtTransformations/README.md) |
+| **rawData (reference only)/** | Sample raw datasets for GitHub reference | - | [📁 README](./rawData%20(reference%20only)/README.md) |
+| **processedData (reference only)/** | Sample processed datasets for GitHub reference | - | [📁 README](./processedData%20(reference%20only)/README.md) |
 
 <br/>
 
