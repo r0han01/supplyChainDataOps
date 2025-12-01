@@ -290,6 +290,8 @@ This project currently showcases one dashboard, but we have **4 additional analy
 
 You can use any BI tool to build dashboards from these marts. Popular options include:
 
+###
+
 <div align="center">
 
 <!-- BI Tool Logos -->
@@ -306,6 +308,8 @@ You can use any BI tool to build dashboards from these marts. Popular options in
 <img src="https://github.com/user-attachments/assets/264fcb2c-da12-4770-9c82-f82ac8dfea8b" alt="Apache Superset" width="100" style="margin: 0 30px;"/>
 
 </div>
+
+###
 
 **Step-by-Step Process:**
 
