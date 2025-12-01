@@ -81,8 +81,8 @@ The pipeline follows a modern data engineering pattern:
 
 **1. Clone Repository**
 ```bash
-git clone <repository-url>
-cd Project
+git clone https://github.com/r0han01/supplyChainDataOps.git
+cd supplyChainDataOps
 ```
 
 **2. Environment Configuration**
