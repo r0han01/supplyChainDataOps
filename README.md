@@ -349,21 +349,22 @@ If you encounter any issues or have questions:
 
 ---
 
-## Questions or Feedback?
+## Questions, Feedback & Use
 
-If you have questions about implementation, need troubleshooting assistance, or want to discuss data engineering approaches:
+This repository is intended for **learning and practice**—a way to explore modern data engineering and BI tools end-to-end. There are no official releases; feel free to fork, experiment, and adapt the patterns to your own projects.
 
-**📧 Contact:** hello@rkatkam.com  
-**📬 Subject:** `[supplyChainDataOps]`
+If you have questions about the implementation, want to discuss data engineering approaches, or run into issues:
+
+- **Email:** hello@rkatkam.com  
+- **Subject:** `[supplyChainDataOps] <your topic>`
 
 ---
 
 <div align="center">
   
-### ⭐ If you found this project useful, consider giving it a star!
+### ⭐ If this project helped you, a star on the repo is appreciated.
 
-<sub>Built and maintained by <strong><a href="https://github.com/r0han01">Rohan Katkam</a></strong></sub>
-
-<sub>Licensed under <a href="./LICENSE">MIT License</a> • Open Source • Actively Maintained</sub>
+<sub>Built and maintained by <strong><a href="https://github.com/r0han01">Rohan Katkam</a></strong> — active self-learner exploring the modern data stack.</sub><br/>
+<sub>Code is MIT-licensed and open source for educational and exploratory use.</sub>
 
 </div>
