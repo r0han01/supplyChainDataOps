@@ -249,7 +249,7 @@ dbt run
 
 <div align="center">
   <!-- Sigma Logo - Add image URL here -->
-  <img src="https://github.com/user-attachments/assets/8f2a399a-e9f7-48b5-8883-e9a73fa9ca23" alt="Sigma Computing" width="150" style="margin: 20px;"/>
+  <img src="https://github.com/user-attachments/assets/653e49bb-cc89-48b8-b083-759844c62725" alt="Sigma Computing" width="150" style="margin: 20px;"/>
 </div>
 
 </div>
@@ -262,7 +262,7 @@ Sigma was chosen for this project as it's one of the best cloud-based BI tools f
 
 <div align="center">
   <!-- Power BI Logo - Add image URL here -->
-  <img src="https://github.com/user-attachments/assets/755521e6-e70b-4630-938d-cae587614dad" alt="Microsoft Power BI" width="150" style="margin: 20px;"/>
+  <img src="https://github.com/user-attachments/assets/8de74a39-b735-4bee-bd67-61ac9c9aaebc" alt="Microsoft Power BI" width="150" style="margin: 20px;"/>
 </div>
 
 ##
