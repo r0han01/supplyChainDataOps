@@ -157,29 +157,17 @@ dbt run
 - Build interactive dashboards with KPI cards and charts
 - See dashboard screenshot above for reference
 
-### Common Hurdles & Solutions
+### Troubleshooting
 
-**1. AWS IAM Role Setup**
-- **Issue:** Cannot create IAM role with `:root` principal via API/Terraform
-- **Solution:** Two-phase approach: Create role with your AWS account ID first, then update trust policy with Snowflake IAM user ARN and External ID after creating storage integration
+| Issue | Quick Fix |
+|-------|-----------|
+| **AWS IAM Role** - Cannot create with `:root` principal | Two-phase approach: Create role with AWS account ID first, then update trust policy with Snowflake IAM user ARN after storage integration |
+| **Snowflake Account ID** - Documentation shows wrong account ID | Extract actual ID using `DESC STORAGE INTEGRATION` - different regions use different AWS account IDs |
+| **Data Type Mismatches** - CSV columns don't match Snowflake schema | Define proper file formats with correct date/timestamp formats. Use `VARCHAR` initially, transform in dbt |
+| **Schema Case Sensitivity** - Snowflake UPPERCASE vs dbt camelCase | Use uppercase schema names in `sources.yml` and `dbt_project.yml` to match Snowflake |
+| **Alteryx Parquet** - Parquet not supported in Designer Cloud | Use CSV format for Alteryx compatibility |
 
-**2. Snowflake Account ID Confusion**
-- **Issue:** Documentation shows generic account IDs that don't match your actual Snowflake account
-- **Solution:** Extract actual AWS account ID from storage integration using `DESC STORAGE INTEGRATION` command. Different regions use different AWS account IDs.
-
-**3. Data Type Mismatches**
-- **Issue:** CSV columns don't match Snowflake table schema (e.g., strings in INT columns)
-- **Solution:** Define proper file formats with correct date/timestamp formats. Use `VARCHAR` for mixed-type columns initially, then transform in dbt.
-
-**4. Schema Name Case Sensitivity**
-- **Issue:** Snowflake stores unquoted identifiers in UPPERCASE, but dbt expects camelCase
-- **Solution:** Use uppercase schema names in `sources.yml` and `dbt_project.yml` to match Snowflake, or quote identifiers consistently.
-
-**5. Alteryx Parquet Compatibility**
-- **Issue:** Wanted to use Parquet for efficiency, but Alteryx Designer Cloud doesn't support Parquet preview
-- **Solution:** Switched to CSV format for Alteryx compatibility while maintaining pipeline efficiency
-
-Each component folder has detailed READMEs with step-by-step instructions and troubleshooting.
+> 💡 **Need more help?** Each component folder has detailed READMEs with step-by-step instructions.
 
 <br/>
 
@@ -192,8 +180,7 @@ Each component folder has detailed READMEs with step-by-step instructions and tr
 | **terraform/** | Infrastructure as Code for AWS IAM roles | `Terraform Config → AWS IAM Role → Snowflake Access` | [📁 README](./terraform/README.md) |
 | **snowflakeIngestion/** | Python script to load processed data into Snowflake | `S3 Processed → COPY INTO → Snowflake Tables` | [📁 README](./snowflakeIngestion/README.md) |
 | **dbtTransformations/** | SQL-based data modeling and transformations | `Raw Data → Staging → Dimensions/Facts → Analytics Marts` | [📁 README](./dbtTransformations/README.md) |
-| **rawData (reference only)/** | Sample raw datasets for GitHub reference | Reference only | [📁 README](./rawData%20(reference%20only)/README.md) |
-| **processedData (reference only)/** | Sample processed datasets for GitHub reference | Reference only | [📁 README](./processedData%20(reference%20only)/README.md) |
+
 
 <br/>
 
