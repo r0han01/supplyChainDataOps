@@ -10,6 +10,12 @@
 
 </div>
 
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![AWS](https://img.shields.io/badge/AWS-S3-orange)](https://aws.amazon.com/s3/)
+[![Snowflake](https://img.shields.io/badge/Snowflake-Data%20Warehouse-blue)](https://www.snowflake.com/)
+[![dbt](https://img.shields.io/badge/dbt-Transformations-ff6849)](https://www.getdbt.com/)
+[![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC)](https://www.terraform.io/)
+
 ---
 
 ## Overview
