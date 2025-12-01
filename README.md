@@ -27,6 +27,58 @@ End-to-end data pipeline processing **180K+ orders** and **470K+ clickstream eve
 
 <br/>
 
+## Dataset
+
+<div align="center">
+
+### DataCo SMART Supply Chain for Big Data Analysis
+
+</div>
+
+**Why This Dataset?**
+
+Supply chain analytics is critical for modern businesses, especially in the USA where logistics and distribution networks drive economic efficiency. This dataset provides real-world insights into order fulfillment, customer behavior, product performance, and operational metrics - making it ideal for demonstrating end-to-end data engineering and business intelligence capabilities.
+
+**Industry Relevance:**
+
+- **Supply Chain Market:** The US supply chain market is valued at $37+ billion and growing, with companies investing heavily in data-driven optimization
+- **E-commerce Growth:** Online retail continues to expand, requiring sophisticated analytics for inventory, shipping, and customer satisfaction
+- **Operational Excellence:** Companies use supply chain data to reduce costs, improve delivery times, and enhance customer experience
+- **Business Intelligence:** Supply chain metrics directly impact revenue, profit margins, and competitive advantage
+
+**Dataset Details:**
+
+<table align="center">
+  <tr>
+    <th align="left">Metric</th>
+    <th align="left">Value</th>
+  </tr>
+  <tr>
+    <td><strong>Orders Dataset</strong></td>
+    <td>180,519 rows • 53 → 58 columns (after enrichment)</td>
+  </tr>
+  <tr>
+    <td><strong>Clickstream Dataset</strong></td>
+    <td>469,977 rows • 8 → 20 columns (after enrichment)</td>
+  </tr>
+  <tr>
+    <td><strong>Data Sources</strong></td>
+    <td>
+      <a href="https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis">📊 Kaggle</a> • 
+      <a href="https://data.mendeley.com/datasets/8gx2fvg2k6/5">📚 Mendeley</a>
+    </td>
+  </tr>
+</table>
+
+**Key Features:**
+- Order fulfillment metrics (delivery status, shipping times, profit margins)
+- Customer segmentation and behavior analysis
+- Product performance and category insights
+- Clickstream data for conversion funnel analysis
+- Geographic and temporal patterns
+
+<br/>
+
 ## Architecture
 
 **Workflow Explanation:**
@@ -189,14 +241,6 @@ dbt run
 **Sigma Computing** dashboard connected to Snowflake `MARTSALESPERFORMANCE` table. See dashboard screenshot above.
 
 **To recreate:** Connect Sigma to Snowflake, select analytics mart tables, and build visualizations.
-
-<br/>
-
-## Dataset
-
-- **Source:** [DataCo Supply Chain Dataset](https://data.mendeley.com/datasets/8gx2fvg2k6/5) (Mendeley)
-- **Orders:** 180,519 rows (53 → 58 columns after enrichment)
-- **Clickstream:** 469,977 rows (8 → 20 columns after enrichment)
 
 ---
 
