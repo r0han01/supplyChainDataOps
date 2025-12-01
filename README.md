@@ -238,9 +238,37 @@ dbt run
 
 ## Business Intelligence Dashboard
 
-**Sigma Computing** dashboard connected to Snowflake `MARTSALESPERFORMANCE` table. See dashboard screenshot above.
+<div align="center">
 
-**To recreate:** Connect Sigma to Snowflake, select analytics mart tables, and build visualizations.
+### BI Tool Selection
+
+<div align="center">
+  <!-- Sigma Logo - Add image URL here -->
+  <img src="YOUR_SIGMA_LOGO_URL" alt="Sigma Computing" width="150" style="margin: 20px;"/>
+</div>
+
+</div>
+
+**Why Sigma Computing?**
+
+Sigma was chosen for this project as it's one of the best cloud-based BI tools for learning and rapid dashboard development. It requires minimal training and offers a user-friendly interface that makes it accessible for data professionals transitioning into BI roles.
+
+**Tool Comparison:**
+
+<div align="center">
+  <!-- Power BI Logo - Add image URL here -->
+  <img src="YOUR_POWERBI_LOGO_URL" alt="Microsoft Power BI" width="150" style="margin: 20px;"/>
+</div>
+
+While **Power BI** offers more advanced features, integrated tools, and extensive formatting capabilities, **Sigma** excels in simplicity and quick deployment. However, Sigma has limitations in formatting options and advanced analytics features compared to Power BI's comprehensive toolkit.
+
+**For This Project:**
+
+- **Connection:** Sigma → Snowflake `MARTSALESPERFORMANCE` table
+- **Dashboard:** Interactive KPI cards, charts, and visualizations (see screenshot above)
+- **To Recreate:** Connect Sigma to Snowflake, select analytics mart tables, and build visualizations
+
+> 💡 **Note:** For production environments requiring advanced analytics, Power BI may be a better choice. Sigma is ideal for quick prototyping and cloud-native BI workflows.
 
 ---
 
