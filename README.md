@@ -62,17 +62,13 @@ The pipeline follows a modern data engineering pattern:
 
 <br/>
 
-<a href="https://www.python.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="60" height="60" style="margin: 0 20px;"/></a>
-<a href="https://aws.amazon.com/s3/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS S3" width="60" height="60" style="margin: 0 20px;"/></a>
-<a href="https://www.snowflake.com/"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/snowflake.svg" alt="Snowflake" width="60" height="60" style="margin: 0 20px;"/></a>
-<a href="https://www.getdbt.com/"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/dbt.svg" alt="dbt" width="60" height="60" style="margin: 0 20px;"/></a>
-<a href="https://www.terraform.io/"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/terraform.svg" alt="Terraform" width="60" height="60" style="margin: 0 20px;"/></a>
-<a href="https://www.alteryx.com/"><img src="https://www.alteryx.com/favicon.ico" alt="Alteryx" width="60" height="60" style="margin: 0 20px;"/></a>
-<a href="https://www.sigmacomputing.com/"><img src="https://www.sigmacomputing.com/favicon.ico" alt="Sigma Computing" width="60" height="60" style="margin: 0 20px;"/></a>
-
-<br/><br/>
-
-**Python** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **AWS S3** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Snowflake** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **dbt** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Terraform** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Alteryx** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Sigma**
+<a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" style="margin: 0 10px;"/></a>
+<a href="https://aws.amazon.com/s3/"><img src="https://img.shields.io/badge/AWS_S3-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS S3" style="margin: 0 10px;"/></a>
+<a href="https://www.snowflake.com/"><img src="https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white" alt="Snowflake" style="margin: 0 10px;"/></a>
+<a href="https://www.getdbt.com/"><img src="https://img.shields.io/badge/dbt-FF694A?style=for-the-badge&logo=dbt&logoColor=white" alt="dbt" style="margin: 0 10px;"/></a>
+<a href="https://www.terraform.io/"><img src="https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" style="margin: 0 10px;"/></a>
+<a href="https://www.alteryx.com/"><img src="https://img.shields.io/badge/Alteryx-0078EF?style=for-the-badge&logo=alteryx&logoColor=white" alt="Alteryx" style="margin: 0 10px;"/></a>
+<a href="https://www.sigmacomputing.com/"><img src="https://img.shields.io/badge/Sigma-FF6B35?style=for-the-badge&logo=sigmacomputing&logoColor=white" alt="Sigma Computing" style="margin: 0 10px;"/></a>
 
 </div>
 
