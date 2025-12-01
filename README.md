@@ -1,6 +1,6 @@
 <div align="center">
 
-# Modern Data Stack: Supply Chain Analytics (2025)
+# Cloud-Native Supply Chain Analytics Platform
 
 > A production-ready data pipeline showcasing AWS S3, Alteryx, Terraform, Snowflake, dbt, and Sigma Computing
 
