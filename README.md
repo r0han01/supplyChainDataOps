@@ -30,9 +30,6 @@ End-to-end data pipeline processing **180K+ orders** and **470K+ clickstream eve
 
 ## Architecture
 
-<!-- Architecture Image Placeholder -->
-<!-- Add your architecture diagram image here -->
-
 **Workflow Explanation:**
 
 The pipeline follows a modern data engineering pattern:
@@ -48,7 +45,6 @@ The pipeline follows a modern data engineering pattern:
 5. **Data Transformation** (dbt) - SQL-based models transform raw data through layers: staging (views for cleaning), dimensions (customer, product, date tables), facts (orders, clickstream tables), and analytics marts (pre-aggregated business metrics). Creates reusable, tested data models.
 
 6. **Business Intelligence** (Sigma Computing) - Interactive dashboard connects directly to Snowflake analytics marts. Builds KPI cards, charts, and visualizations for business insights. Real-time data access with drill-down capabilities.
-###
 
 ![Architecture](https://github.com/user-attachments/assets/2fc25bf5-7905-4797-947d-61a0b5b3691c)
 
