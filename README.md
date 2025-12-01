@@ -279,8 +279,7 @@ While **Power BI** offers more advanced features, integrated tools, and extensiv
 
 ## How to Contribute
 
-This project currently showcases one dashboard, but we have **4 additional analytics marts** ready for exploration:
-
+This project currently showcases one dashboard, but we have **4 additional analytics marts** ready for exploration:h
 - `martSalesPerformance` - Sales metrics by time, segment, and category
 - `martOperationalPerformance` - Delivery and shipping metrics
 - `martClickstreamConversion` - Conversion funnel analysis
@@ -290,6 +289,18 @@ This project currently showcases one dashboard, but we have **4 additional analy
 **Create Your Own Dashboard:**
 
 You can use any BI tool to build dashboards from these marts. Popular options include:
+
+<div align="center">
+
+<!-- BI Tool Logos - Add image URLs here -->
+<img src="YOUR_SIGMA_LOGO_URL" alt="Sigma Computing" width="100" style="margin: 0 15px;"/>
+<img src="YOUR_POWERBI_LOGO_URL" alt="Microsoft Power BI" width="100" style="margin: 0 15px;"/>
+<img src="YOUR_TABLEAU_LOGO_URL" alt="Tableau" width="100" style="margin: 0 15px;"/>
+<img src="YOUR_LOOKER_LOGO_URL" alt="Looker" width="100" style="margin: 0 15px;"/>
+<img src="YOUR_METABASE_LOGO_URL" alt="Metabase" width="100" style="margin: 0 15px;"/>
+<img src="YOUR_SUPERSET_LOGO_URL" alt="Apache Superset" width="100" style="margin: 0 15px;"/>
+
+</div>
 
 - **Sigma Computing** (cloud-native, easy setup)
 - **Microsoft Power BI** (advanced features, comprehensive toolkit)
