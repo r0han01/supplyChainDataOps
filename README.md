@@ -50,6 +50,7 @@ The pipeline follows a modern data engineering pattern:
   <img width="700" alt="Architecture" src="https://github.com/user-attachments/assets/80ea219f-e6ad-43cb-8fa3-e08cc851d2ab" />
 </div>
 ###
+
 **Is this workflow good?** Yes. It follows industry best practices: separation of concerns (ETL vs transformations), infrastructure as code, scalable cloud architecture, and modern data stack tools. Each component has a clear responsibility, making the pipeline maintainable and production-ready.
 
 <br/>
