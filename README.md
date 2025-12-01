@@ -25,13 +25,19 @@ This project showcases real-world data engineering practices: automated data ing
 <div align="center">
 
 ```mermaid
-graph LR
-    A[Kaggle Dataset] -->|dataFetcher.py| B[AWS S3<br/>Raw]
-    B -->|Alteryx| C[AWS S3<br/>Processed]
+graph TB
+    subgraph top[" "]
+        direction LR
+        A[Kaggle Dataset] -->|dataFetcher.py| B[AWS S3<br/>Raw Data]
+        B -->|Alteryx| C[AWS S3<br/>Processed]
+    end
     C -->|Terraform| D[AWS IAM<br/>Integration]
-    D -->|dataLoader.py| E[Snowflake<br/>Warehouse]
-    E -->|dbt| F[Analytics Marts]
-    F -->|Sigma| G[BI Dashboard]
+    subgraph bottom[" "]
+        direction LR
+        D -->|dataLoader.py| E[Snowflake<br/>Warehouse]
+        E -->|dbt| F[Analytics Marts]
+        F -->|Sigma| G[BI Dashboard]
+    end
 ```
 
 </div>
