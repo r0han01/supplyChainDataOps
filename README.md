@@ -292,16 +292,15 @@ You can use any BI tool to build dashboards from these marts. Popular options in
 
 <div align="center">
 
-<!-- BI Tool Logos - Add image URLs here -->
-<img src="YOUR_SIGMA_LOGO_URL" alt="Sigma Computing" width="100" style="margin: 0 25px;"/>
-<img src="YOUR_POWERBI_LOGO_URL" alt="Microsoft Power BI" width="100" style="margin: 0 25px;"/>
-<img src="YOUR_TABLEAU_LOGO_URL" alt="Tableau" width="100" style="margin: 0 25px;"/>
-<img src="YOUR_LOOKER_LOGO_URL" alt="Looker" width="100" style="margin: 0 25px;"/>
-<img src="YOUR_METABASE_LOGO_URL" alt="Metabase" width="100" style="margin: 0 25px;"/>
-<img src="YOUR_SUPERSET_LOGO_URL" alt="Apache Superset" width="100" style="margin: 0 25px;"/>
+<!-- BI Tool Logos -->
+<img src="https://github.com/user-attachments/assets/ea8c198a-b77f-48c5-9b64-52f347af5f43" alt="Sigma Computing" width="100" style="margin: 0 25px;"/>
+<img src="https://github.com/user-attachments/assets/6ea42ef8-3bf1-4490-a329-b7a7368d68fc" alt="Microsoft Power BI" width="100" style="margin: 0 25px;"/>
+<img src="https://github.com/user-attachments/assets/b2084329-4f74-4ce2-b4a2-c4da97efd56b" alt="Tableau" width="100" style="margin: 0 25px;"/>
+<img src="https://github.com/user-attachments/assets/baf2ba03-f522-4f4e-b329-4c57a170b3bf" alt="Looker" width="100" style="margin: 0 25px;"/>
+<img src="https://github.com/user-attachments/assets/b6334b62-ca71-488c-95eb-35f30bdccbdb" alt="Metabase" width="100" style="margin: 0 25px;"/>
+<img src="https://github.com/user-attachments/assets/264fcb2c-da12-4770-9c82-f82ac8dfea8b" alt="Apache Superset" width="100" style="margin: 0 25px;"/>
 
 </div>
-
 **Step-by-Step Process:**
 
 1. **Complete the Pipeline Setup** (follow steps 1-7 in Installation & Configuration)
