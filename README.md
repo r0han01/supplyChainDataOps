@@ -349,6 +349,21 @@ If you encounter any issues or have questions:
 
 ---
 
-## License
+## Questions or Feedback?
 
-MIT - See [LICENSE](./LICENSE)
+If you have questions about implementation, need troubleshooting assistance, or want to discuss data engineering approaches:
+
+**📧 Contact:** hello@rkatkam.com  
+**📬 Subject:** `[supplyChainDataOps]`
+
+---
+
+<div align="center">
+  
+### ⭐ If you found this project useful, consider giving it a star!
+
+<sub>Built and maintained by <strong><a href="https://github.com/r0han01">Rohan Katkam</a></strong></sub>
+
+<sub>Licensed under <a href="./LICENSE">MIT License</a> • Open Source • Actively Maintained</sub>
+
+</div>
