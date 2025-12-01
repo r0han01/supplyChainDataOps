@@ -66,7 +66,7 @@ The pipeline follows a modern data engineering pattern:
 
 ---
 
-## Getting Started
+## How to Use This Project
 
 ### Prerequisites
 
@@ -77,26 +77,76 @@ The pipeline follows a modern data engineering pattern:
 - Terraform installed
 - dbt-snowflake installed
 
-### Setup & Usage
+### Step-by-Step Setup
 
+**1. Clone Repository**
 ```bash
-# 1. Clone repository
 git clone <repository-url>
 cd Project
-
-# 2. Setup environment
-./setup.sh
-cp .env.example .env
-# Edit .env with your credentials (Kaggle, AWS, Snowflake)
-
-# 3. Run the pipeline
-python dataFetcher/dataFetcher.py              # Fetch data → S3
-# Then follow instructions in each component folder:
-# - alteryxWorkflows/README.md (Alteryx ETL)
-# - terraform/README.md (Infrastructure setup)
-# - snowflakeIngestion/README.md (Snowflake loading)
-# - dbtTransformations/README.md (dbt transformations)
 ```
+
+**2. Environment Configuration**
+```bash
+# Setup Python virtual environment and install dependencies
+./setup.sh
+
+# Configure credentials
+cp .env.example .env
+# Edit .env with your credentials:
+# - KAGGLE_API_TOKEN (from Kaggle account settings)
+# - AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY (from AWS IAM)
+# - S3_BUCKET_NAME (your S3 bucket name)
+# - SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER, SNOWFLAKE_PASSWORD
+```
+
+**3. Data Ingestion (Kaggle → S3)**
+```bash
+python dataFetcher/dataFetcher.py
+# Downloads datasets from Kaggle and uploads to S3 raw bucket
+```
+
+**4. Data Preparation (Alteryx)**
+- Open Alteryx Designer Cloud
+- Import workflows from `alteryxWorkflows/`
+- Connect to S3 raw bucket, run transformations
+- Output processed files to S3 processed bucket
+- See [`alteryxWorkflows/README.md`](./alteryxWorkflows/README.md) for detailed steps
+
+**5. Infrastructure Setup (Terraform)**
+```bash
+cd terraform/snowflakeS3Infra
+# Configure terraform.tfvars (see terraform.tfvars.example)
+terraform init
+terraform plan
+terraform apply
+# Creates AWS IAM role for Snowflake S3 access
+# See [`terraform/README.md`](./terraform/README.md) for two-phase setup
+```
+
+**6. Data Loading (S3 → Snowflake)**
+```bash
+cd ../../snowflakeIngestion
+# Ensure .env is configured with Snowflake credentials
+python dataLoader.py
+# Creates tables and loads processed data from S3
+# See [`snowflakeIngestion/README.md`](./snowflakeIngestion/README.md) for verification queries
+```
+
+**7. Data Transformation (dbt)**
+```bash
+cd ../dbtTransformations
+# Configure ~/.dbt/profiles.yml (see profiles.yml.example)
+dbt debug
+dbt run
+# Transforms raw data into staging → dimensions → facts → analytics marts
+# See [`dbtTransformations/README.md`](./dbtTransformations/README.md) for model details
+```
+
+**8. Business Intelligence (Sigma)**
+- Connect Sigma to Snowflake
+- Select analytics mart tables (e.g., `MARTSALESPERFORMANCE`)
+- Build interactive dashboards with KPI cards and charts
+- See dashboard screenshot above for reference
 
 ### Common Hurdles & Solutions
 
