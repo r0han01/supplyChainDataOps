@@ -315,20 +315,23 @@ You can use any BI tool to build dashboards from these marts. Popular options in
 
 1. **Complete the Pipeline Setup** (follow steps 1-7 in Installation & Configuration)
 2. **Run dbt Models** - Ensure all analytics marts are created in Snowflake:
+
+###
    ```bash
    cd dbtTransformations
    dbt run --select marts.analytics.*
    ```
-3. **Connect Your BI Tool to Snowflake:**
+###
+4. **Connect Your BI Tool to Snowflake:**
    - Get Snowflake connection details (account, user, password, warehouse, database)
    - In your BI tool, create a new data source connection
    - Select `SUPPLYCHAINDB` database → `MARTDATA` schema
    - Choose any analytics mart table (e.g., `MARTSALESPERFORMANCE`)
-4. **Build Your Dashboard:**
+5. **Build Your Dashboard:**
    - Create visualizations using the mart tables
    - Experiment with different metrics and dimensions
    - Design a professional, production-ready dashboard
-5. **Submit Your Work:**
+6. **Submit Your Work:**
    - Open a Pull Request with screenshots of your dashboard
    - Include a brief description of your analysis and insights
    - We'll review and accept high-quality contributions!
