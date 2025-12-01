@@ -247,7 +247,7 @@ dbt run
 
 <div align="center">
   <!-- Sigma Logo - Add image URL here -->
-  <img src="YOUR_SIGMA_LOGO_URL" alt="Sigma Computing" width="150" style="margin: 20px;"/>
+  <img src="https://github.com/user-attachments/assets/8f2a399a-e9f7-48b5-8883-e9a73fa9ca23" alt="Sigma Computing" width="150" style="margin: 20px;"/>
 </div>
 
 </div>
@@ -260,8 +260,10 @@ Sigma was chosen for this project as it's one of the best cloud-based BI tools f
 
 <div align="center">
   <!-- Power BI Logo - Add image URL here -->
-  <img src="YOUR_POWERBI_LOGO_URL" alt="Microsoft Power BI" width="150" style="margin: 20px;"/>
+  <img src="https://github.com/user-attachments/assets/755521e6-e70b-4630-938d-cae587614dad" alt="Microsoft Power BI" width="150" style="margin: 20px;"/>
 </div>
+
+##
 
 While **Power BI** offers more advanced features, integrated tools, and extensive formatting capabilities, **Sigma** excels in simplicity and quick deployment. However, Sigma has limitations in formatting options and advanced analytics features compared to Power BI's comprehensive toolkit.
 
