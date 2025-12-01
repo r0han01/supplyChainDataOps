@@ -293,21 +293,14 @@ You can use any BI tool to build dashboards from these marts. Popular options in
 <div align="center">
 
 <!-- BI Tool Logos - Add image URLs here -->
-<img src="YOUR_SIGMA_LOGO_URL" alt="Sigma Computing" width="100" style="margin: 0 15px;"/>
-<img src="YOUR_POWERBI_LOGO_URL" alt="Microsoft Power BI" width="100" style="margin: 0 15px;"/>
-<img src="YOUR_TABLEAU_LOGO_URL" alt="Tableau" width="100" style="margin: 0 15px;"/>
-<img src="YOUR_LOOKER_LOGO_URL" alt="Looker" width="100" style="margin: 0 15px;"/>
-<img src="YOUR_METABASE_LOGO_URL" alt="Metabase" width="100" style="margin: 0 15px;"/>
-<img src="YOUR_SUPERSET_LOGO_URL" alt="Apache Superset" width="100" style="margin: 0 15px;"/>
+<img src="YOUR_SIGMA_LOGO_URL" alt="Sigma Computing" width="100" style="margin: 0 25px;"/>
+<img src="YOUR_POWERBI_LOGO_URL" alt="Microsoft Power BI" width="100" style="margin: 0 25px;"/>
+<img src="YOUR_TABLEAU_LOGO_URL" alt="Tableau" width="100" style="margin: 0 25px;"/>
+<img src="YOUR_LOOKER_LOGO_URL" alt="Looker" width="100" style="margin: 0 25px;"/>
+<img src="YOUR_METABASE_LOGO_URL" alt="Metabase" width="100" style="margin: 0 25px;"/>
+<img src="YOUR_SUPERSET_LOGO_URL" alt="Apache Superset" width="100" style="margin: 0 25px;"/>
 
 </div>
-
-- **Sigma Computing** (cloud-native, easy setup)
-- **Microsoft Power BI** (advanced features, comprehensive toolkit)
-- **Tableau** (powerful visualizations, enterprise-grade)
-- **Looker** (data modeling focus, embedded analytics)
-- **Metabase** (open-source, self-hosted option)
-- **Apache Superset** (open-source, Python-based)
 
 **Step-by-Step Process:**
 
