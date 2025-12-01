@@ -1,6 +1,6 @@
 <div align="center">
 
-# Cloud-Native Supply Chain Analytics Platform
+# Supply Chain Analytics: S3, Snowflake, dbt & BI
 
 A production-ready data pipeline showcasing AWS S3, Alteryx, Terraform, Snowflake, dbt, and Sigma Computing
 
@@ -103,8 +103,6 @@ The pipeline follows a modern data engineering pattern:
   <img width="700" alt="Architecture" src="https://github.com/user-attachments/assets/80ea219f-e6ad-43cb-8fa3-e08cc851d2ab" />
 
 </div>
-
-##
 
 > **Is this workflow good?** Yes. It follows industry best practices: separation of concerns (ETL vs transformations), infrastructure as code, scalable cloud architecture, and modern data stack tools. Each component has a clear responsibility, making the pipeline maintainable and production-ready.
 
@@ -292,8 +290,6 @@ This project currently showcases one dashboard, but we have **4 additional analy
 
 You can use any BI tool to build dashboards from these marts. Popular options include:
 
-###
-
 <div align="center">
 
 <!-- BI Tool Logos -->
@@ -311,19 +307,15 @@ You can use any BI tool to build dashboards from these marts. Popular options in
 
 </div>
 
-###
-
 **Step-by-Step Process:**
 
 1. **Complete the Pipeline Setup** (follow steps 1-7 in Installation & Configuration)
 2. **Run dbt Models** - Ensure all analytics marts are created in Snowflake:
 
-###
    ```bash
    cd dbtTransformations
    dbt run --select marts.analytics.*
    ```
-###
 4. **Connect Your BI Tool to Snowflake:**
    - Get Snowflake connection details (account, user, password, warehouse, database)
    - In your BI tool, create a new data source connection
