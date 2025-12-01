@@ -4,7 +4,7 @@
 
 > A production-ready data pipeline showcasing AWS S3, Alteryx, Terraform, Snowflake, dbt, and Sigma Computing
 
-<br/>
+<br/><br/>
 
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License" height="32"></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -15,8 +15,6 @@
 <a href="https://www.getdbt.com/"><img src="https://img.shields.io/badge/dbt-Transformations-ff6849" alt="dbt" height="32"></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://www.terraform.io/"><img src="https://img.shields.io/badge/Terraform-IaC-7B42BC" alt="Terraform" height="32"></a>
-
-<br/>
 
 </div>
 
