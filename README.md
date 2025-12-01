@@ -49,7 +49,7 @@ The pipeline follows a modern data engineering pattern:
 <div align="center">
   <img width="700" alt="Architecture" src="https://github.com/user-attachments/assets/80ea219f-e6ad-43cb-8fa3-e08cc851d2ab" />
 </div>
-
+###
 **Is this workflow good?** Yes. It follows industry best practices: separation of concerns (ETL vs transformations), infrastructure as code, scalable cloud architecture, and modern data stack tools. Each component has a clear responsibility, making the pipeline maintainable and production-ready.
 
 <br/>
@@ -66,8 +66,7 @@ The pipeline follows a modern data engineering pattern:
 <a href="https://www.alteryx.com/"><img src="https://img.shields.io/badge/Alteryx-0078EF?style=for-the-badge&logo=alteryx&logoColor=white" alt="Alteryx" style="margin: 0 10px;"/></a>
 <a href="https://www.sigmacomputing.com/"><img src="https://img.shields.io/badge/Sigma-FF6B35?style=for-the-badge&logo=sigmacomputing&logoColor=white" alt="Sigma Computing" style="margin: 0 10px;"/></a>
 
-<br/>
-
+###
 > 💡 **Prerequisites:** Make sure you have accounts ready for all services (they offer free trials). Store your credentials securely in `.env` file - see `.env.example` for required variables.
 
 </div>
@@ -76,14 +75,17 @@ The pipeline follows a modern data engineering pattern:
 
 ## Installation & Configuration
 
-### Prerequisites
+### Project Approach
 
-- Python 3.8+
-- AWS account with S3 bucket
-- Snowflake account
-- Alteryx Designer Cloud access
-- Terraform installed
-- dbt-snowflake installed
+This project demonstrates both **UI-based** and **programmatic** workflows, providing flexibility for different skill levels and preferences:
+
+- **Infrastructure (AWS S3)**: Create buckets manually via AWS Console or use Terraform (IaC)
+- **Data Warehouse (Snowflake)**: Setup via Snowflake web UI or Python scripts (`dataLoader.py`)
+- **Transformations (dbt)**: Use dbt Cloud (web UI) or dbt Core (command-line)
+- **ETL (Alteryx)**: Visual Designer Cloud workflows with code-based formulas
+- **BI (Sigma)**: Web-based dashboard builder connecting to Snowflake
+
+All components include both UI and code options - choose what works best for you. Code is provided for automation and reproducibility.
 
 ### Step-by-Step Setup
 
