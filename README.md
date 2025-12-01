@@ -1,5 +1,3 @@
-<div align="center">
-
 # Cloud-Native Supply Chain Analytics Platform
 
 A production-ready data pipeline showcasing AWS S3, Alteryx, Terraform, Snowflake, dbt, and Sigma Computing
